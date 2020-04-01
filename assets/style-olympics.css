@@ -1,0 +1,567 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Oxygen:wght@300;400;700&display=swap');
+.olympics {
+	font-family: 'Oswald', sans-serif;
+	/*font-family: 'Oxygen', sans-serif;*/
+}
+
+.olympics .bg-marron {
+	background-color: #a0122c;
+}
+
+.olympics .bg-navy {
+	background-color: #004b9a;
+}
+.olympics a.btn {
+	border: 0px;
+	font-weight: 400;
+}
+
+.olympics img {
+	width: auto;
+}
+
+.olympics h4.title {
+	font-size: 25px;
+	line-height: 26px;
+	font-weight: 400;
+	margin-bottom: 20px;
+	display: inline-block;
+	text-transform: uppercase;
+    background: #2f2f8f;
+    background: -webkit-linear-gradient(right, #2f2f8f, #e8008c);
+    background: -o-linear-gradient(left, #2f2f8f, #e8008c);
+    background: -moz-linear-gradient(left, #2f2f8f, #e8008c);
+    background: linear-gradient(to left, #2f2f8f, #e8008c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.olympics h4.title.custom-1 {
+	font-size: 30px;
+	line-height: 32px;
+}
+
+.olympics h4.title.custom-1 {
+	font-size: 30px;
+	line-height: 36px;
+}
+
+.olympics h4.cust-2 {
+	font-size: 30px;
+	color: #FFF;
+	font-weight: 300;
+}
+
+.olympics .last-news h4.title {
+	font-size: 30px;
+	margin-bottom: 35px;
+	line-height: 32px;
+}
+
+.olympics .banner-top {
+	width: 100%;
+	height: 183px;
+	position: relative;
+}
+
+.olympics .banner-top .bg-left {
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	background-color: #123566;
+}
+
+.olympics .banner-top .bg-right {
+	width: 50%;
+	right: 0;
+	height: 100%;
+	position: absolute;
+	background-color: #FFF;
+}
+
+.olympics .banner-top .wrapper-banner {
+	max-width: 1280px;
+	position: relative;
+	margin: 0 auto;
+	height: 100%;
+}
+
+.olympics .banner-top .wrapper-banner .box {
+	padding-top: 31px;
+	text-align: center;
+	position: relative;
+	height: 100%;
+	float: left;
+}
+
+.olympics .banner-top .wrapper-banner .box img.meconnect-logo {
+	max-width: 166px;
+	margin-bottom: 18px;
+}
+
+.olympics .banner-top .wrapper-banner .box.bbox-1 {
+	width: 30.079%;
+	max-width: 385px;
+	
+}
+
+.olympics .banner-top .wrapper-banner .box.bbox-2 {
+	width: 45.704%;
+	max-width: 585px;
+	background-color: #004b9a;
+	color: #FFF;
+}
+
+.olympics .banner-top .wrapper-banner .box.bbox-2 span.countdown {
+	display: inline-block;
+	font-size: 130.48px; 
+	line-height: 121px;
+    letter-spacing: -7px;
+    margin-top: -5px!important;
+}
+
+.olympics .banner-top .wrapper-banner .box.bbox-2 p {
+    margin-top: -5px!important;
+	max-width: 180px;
+	display: inline-block;
+	text-transform: uppercase;
+	text-align: left;
+	margin-left: 20px;
+	font-size: 25.8px;
+	line-height: 29.25px;
+}
+
+.olympics .banner-top .wrapper-banner .box.bbox-2 p span {
+	font-size: 18.8px;
+	color: #70b0f3;
+}
+
+.olympics .banner-top .wrapper-banner .box.bbox-3 {
+	width: 24.217%;
+	max-width: 310px;
+	padding-top: 31px;
+}
+
+.olympics .banner-top .wrapper-banner .box.bbox-3 span {
+	display: block;
+	font-size: 13px;
+	color: #515151;
+	margin-top: 14px;
+}
+
+.olympics #hero-slider {
+	height: 460px;
+}
+
+.olympics .box-news {
+	display: inline-block;
+	width: 100%;
+}
+
+.olympics .section.news {
+	text-align: center;
+	background-image: url('img/background-marron-1.png');
+	background-repeat: no-repeat;
+	background-position: bottom center;
+
+}
+
+.olympics .section.news .wrapper {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 48px 15px 170px;
+	position: relative;
+	display: inline-block;
+	text-align: left;
+}
+
+.olympics .section.news .wrapper .content {
+	width: 65.812%;
+	float: left;
+	margin-right: 30px;
+}
+
+.olympics .section.news .wrapper .content .list-headline-news {
+	display: inline-block;
+	width: 100%;
+	position: relative;
+	margin-bottom: 22px!important;
+}
+
+.olympics .section.news .wrapper .content .list-headline-news .news-content {
+	padding: 29px;
+	color: #FFF;
+	height: 100%;
+}
+
+.olympics .section.news .wrapper .content .list-headline-news .news-content h4.news-title {
+	font-size: 25px;
+	font-weight: 300;
+	line-height: 29px;
+	text-transform: uppercase;
+}
+
+.olympics .section.news .wrapper .content .list-headline-news .news-content p {
+	font-size: 15px;
+	color: #d2d2d2;
+	font-family: "Oxygen",Arial,sans-serif;
+	font-weight: 400;
+}
+
+.olympics .section.news .wrapper .content .list-headline-news.right-images img {
+	float: right;
+	margin-left: 29px;
+}
+
+.olympics .section.news .wrapper .content .list-headline-news.left-images img {
+	float: left;
+	margin-right: 29px;
+}
+
+.olympics .section.news .wrapper .sidebar {
+	width: calc(34.188% - 30px);
+	float: left;
+}
+
+.olympics .sidebar .ads-box {
+	height: 100px;
+	width: 320px;
+	background-color: #ccc;
+	text-align: center;
+}
+
+.olympics .ads-box.top {
+	clear: both;
+	margin: 30px auto 40px;
+	display: block;
+	height: 90px;
+	width: 728px;
+	background-color: #ccc;
+	text-align: center;
+}
+
+.olympics .ads-box.right {
+	height: 250px;
+	width: 100%;
+	background-color: #ccc;
+	margin-bottom: 55px;
+	text-align: center;
+}
+
+.olympics .fb-widget {
+	height: 250px;
+	width: 100%;
+	max-width: 320px;
+	background-color: #ccc;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.olympics .last-news {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+
+.olympics .last-news a.see-all {
+	font-size: 12px;
+	font-family: "Oxygen",Arial,sans-serif;
+	display: inline-block;
+	float: right;
+	text-decoration: underline;
+	color: #cc3636;
+	margin-top: 15px;
+}
+
+.olympics .last-news .item img {
+	margin-bottom: 8px;
+}
+
+.olympics .last-news .item label {
+	display: block;
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.olympics .last-news .item p {
+	font-size: 13px;
+	font-weight: 400;
+	margin-top: 3px;
+	margin-bottom: 0px;
+}
+
+.olympics .last-news .item a {
+	font-size: 12px;
+	text-decoration: underline;
+	color: #cc3636;
+	position: relative;
+}
+
+.olympics .swim-play {
+	min-height: 713px;
+	width: 100%;
+	display: inline-block;
+	background-color: #123566;
+}
+
+.olympics .swim-play .wrapper {
+	width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;;
+}
+
+.olympics .swim-play .box-swim-play {
+	padding: 40px 22px 0;
+	display: inline-block;
+	width: 100%;
+}
+
+.olympics .swim-play .box-swim-play .box {
+	width: 26.6430%;
+	margin-right: 5.5726%;
+	float: left;
+	display: inline-block;
+}
+
+.olympics .swim-play .box-swim-play .box:first-child {
+	padding-right: 22px;
+}
+
+.olympics .swim-play .box-swim-play .box:nth-child(2) {
+	width: 35.52340%
+}
+
+.olympics .swim-play .box-swim-play .box:last-child {
+	margin-right: 0px;
+}
+
+.olympics .swim-play .box-swim-play .medals-box p {
+	font-size: 15px;
+	font-weight: 300;
+	color: #d1d1d1;
+	max-width: 240px;
+}
+
+.olympics .swim-play .box-swim-play .medals-box ul {
+	display: inline-block;
+	width: 100%;
+}
+
+.olympics .swim-play .box-swim-play .medals-box ul li {
+	width: 32%;
+	margin-right: 2%; 
+	margin-bottom: 24px;
+	text-align: center;
+	float: left;
+	display: inline-block;
+}
+
+.olympics .swim-play .box-swim-play .medals-box ul li:nth-child(3n) {
+	margin-right: 0;
+}
+
+.olympics .swim-play .box-swim-play .medals-box ul li img {
+	margin-bottom: 14px;
+}
+
+.olympics .swim-play .box-swim-play .medals-box ul li .text {
+	font-size: 10px;
+	color: #d2d2d2;
+}
+
+.olympics .swim-play .box-swim-play .howtoplay-box {
+	border-top: 1px solid #FFF;
+	color: #d1d1d1;
+	font-size: 15px; 
+}
+
+.olympics .swim-play .box-swim-play .howtoplay-box p {
+	margin-bottom: 18px;
+}
+
+.olympics .swim-play .box-swim-play .howtoplay-box ul {
+	max-width: 260px;
+}
+
+.olympics .swim-play .box-swim-play .howtoplay-box ul li {
+	display: inline-block;
+	width: 100%;
+}
+
+.olympics .swim-play .box-swim-play .howtoplay-box .number {
+	font-size: 10px;
+	font-weight: 600;
+	color: #010101;
+	width: 14px;
+	text-align: center;
+	background-color: #d1d1d1;
+	display: inline-block;
+	margin-right: 8px;
+	margin-top: 5px!important;
+	float: left;
+	border-radius: 10px;
+}
+
+.olympics .swim-play .box-swim-play .howtoplay-box .text {
+	width: calc(100% - 22px);
+	display: inline-block;
+	float: left;
+	font-weight: 300;
+}
+
+.olympics .swim-play .box-swim-play .howtoplay-box .text span {
+	display: block;
+	font-size: 13px;
+	font-style: italic;
+}
+
+.olympics .section.faq {
+    max-width: 100%;
+    position: relative;
+    /*padding: 60px 20px;*/
+}
+
+.olympics .section.faq .wrapper {
+	position: relative;
+    background-image: url('img/background-faq-1.jpg');
+    background-position: top center;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: 100% 100%;
+}
+
+.olympics .section.faq .logo-olympic {
+	position: absolute;
+	right: 1%;
+	bottom: 20px;
+	z-index: 1;
+}
+
+.olympics .section.faq .bg-left {
+	background-color: #68b1d4;
+	position: absolute;
+	width: 50%;
+	left: 0;
+	height: 100%;
+}
+
+.olympics .section.faq .bg-right {
+	background-color: #004b9a;
+	position: absolute;
+	width: 50%;
+	right: 0;
+	height: 100%;
+}
+
+.olympics .section.faq .panel-group {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 37px 0px;
+}
+.olympics .section.faq .panel-group h4 {
+	text-align: center;
+	display: block;
+}
+.olympics .section.faq .panel-group a {
+    color: #4d4d4d;
+}
+.olympics .section.faq .panel {
+    margin-bottom: 20px;
+}
+.olympics .section.faq .panel-heading {
+    padding: 14px 25px 14px 50px;
+}
+.olympics .section.faq .panel-heading a {
+    font-size: 15px;
+    display: block;
+    padding-right: 25px;
+    font-weight: 600;
+}
+.olympics .section.faq .panel-heading span {
+    display: inline-block;
+    font-family: "icomoonnew";
+    font-size: 14px;
+    line-height: 14px;
+    color: #4d4d4d;
+    float: left;
+    margin-right: -25px;
+    margin-left: -24px;
+    padding-top: 6px;
+}
+.olympics .section.faq .active .panel-heading span {
+      -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+}
+.olympics .section.faq .panel-heading span:before {
+    content: "\e614";
+}
+.olympics .section.faq .panel-content{
+    padding-top: 0px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    border-bottom: 1px solid #a4a4a4;
+    padding: 0 25px 0px;
+}
+.olympics .section.faq .panel-content p {
+    font-size: 15px;
+    color: #4d4d4d;
+    line-height: 24px;
+    margin-bottom: 15px;
+    font-weight: 400
+}
+.olympics .section.faq .panel-content ul {
+    padding-left: 20px;
+}
+.olympics .section.faq .panel-content span {
+    font-size: 13px;
+    font-style: italic;
+}
+
+/* Carousel Styling */
+
+#carousel.outerWrapper {
+	text-align: left;
+	position:relative;
+	margin:0px auto 40;
+	width:100%;
+}
+
+#carousel .item {
+	float: left;
+	margin-right: 30px;
+	width: 270px;
+	padding: 0px;
+	height: 240px;
+}
+
+#carousel .left-nav-btn, #carousel .right-nav-btn {
+	position: absolute;
+	width: 12px;
+	height: 31px;
+	top: 80px;
+	cursor: pointer;
+	opacity: 0.8;
+	background:transparent url('img/prev-arrow.png') no-repeat;
+	-webkit-transition:opacity 0.2s linear;
+  	-moz-transition:opacity 0.2s linear;
+  	-o-transition:opacity 0.2s linear;
+  	transition:opacity 0.2s linear;
+}
+
+#carousel .left-nav-btn {
+	left:-36px;
+}
+
+#carousel .right-nav-btn {
+	right:-36px;
+	background:transparent url('img/next-arrow.png') no-repeat;
+	
+}
+
+#carousel .left-nav-btn:hover, #carousel .right-nav-btn:hover {
+	opacity: 1;
+}

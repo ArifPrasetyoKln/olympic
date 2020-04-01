@@ -1,0 +1,122 @@
+function SuccessUID(UID)
+{
+    var d = new Date();
+    d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = "UID=" + UID + "; " + expires+ "; domain=.mediacorp.sg; path=/";
+	
+	cX.callQueue.push(['invoke', function () { // This is called when CX is ready, no need for callQueue.push after this.
+		if (UID != "" && UID != "null" && UID != "true" && UID != "false" && UID != "error" && UID != "undefined" && UID.length > 5)
+		{
+			cX.addExternalId({ id: UID, type: 'mdc' });
+		}
+		cX.setSiteId('1140723858860234819');
+		//for testing environment only. 
+						//cX.sendPageViewEvent({ 'location': 'http://www.channelnewsasia.com/news/asiapacific/aggressive-governance-for/1790254.html' });
+		//for production use below
+		cX.sendPageViewEvent();
+		}]);
+}
+
+var cookies = ("cookie" in document && (document.cookie.length > 0 ||
+    (document.cookie = "test").indexOf.call(document.cookie, "test") > -1));
+
+if (!cookies) {
+    //return;
+}
+
+var UniversalID = "";
+var LotameID = "";
+var CxenseID = "";
+var SSOID = getCookie('sso_id');
+var fID = "";
+
+
+if(typeof(Fingerprint) != "undefined"){
+  fID = new Fingerprint().get();
+}
+
+  //Pass SSOID to lotame - Start
+if (SSOID != "") {
+    _cc5225.add('tp', 'MCRP'); //'MCRP'
+    _cc5225.add('tpid', SSOID);
+
+}
+
+_cc5225.bcp();
+//Pass SSOID to lotame - END
+
+var name = "UID=";
+var ca = document.cookie.split(';');
+for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1);
+    if (c.indexOf(name) == 0) {
+        UniversalID = c.substring(name.length, c.length);
+        break;
+    }
+}
+
+if(typeof(lotauds) != "undefined") {
+	LotameID = lotauds.Profile.pid;
+}
+
+if(typeof(cX) != "undefined") {
+CxenseID = cX.getUserId();
+}
+
+/*if ((UniversalID != "" && SSOID == "") || (UniversalID == SSOID && SSOID != "")) {
+    cX.callQueue.push(['invoke', function() { // This is called when CX is ready, no need for callQueue.push after this.
+        cX.setSiteId('9222322790409326880');
+      	cX.addExternalId({ id: UniversalID, type: 'mdc'});
+        //for testing environment only. 
+        //cX.sendPageViewEvent({ 'location': 'http://www.channelnewsasia.com/news/asiapacific/aggressive-governance-for/1790254.html' });
+        //for production use below
+        cX.sendPageViewEvent();
+    }]);
+  
+} 
+else {*/
+/*	$.get("https://uid.mediacorp.sg/api/Profiles/GetUID?LotameID=" +
+        LotameID + "&CxenseID=" + CxenseID + "&SSOID=" + SSOID + "&UniversalID=" + UniversalID,"",		
+		function(responseString){
+			var UID = responseString.split("'")[1];
+			var d = new Date();
+			d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
+			var expires = "expires=" + d.toUTCString();
+			document.cookie = "UID=" + UID + "; " + expires+ "; domain=.channelnewsasia.com; path=/";
+			
+			cX.callQueue.push(['invoke', function () { // This is called when CX is ready, no need for callQueue.push after this.
+				if (UID != "" && UID != "null" && UID != "true" && UID != "false" && UID != "error" && UID != "undefined" && UID.length > 5)
+				{
+					cX.addExternalId({ id: UID, type: 'mdc' });
+				}
+				cX.setSiteId('9222322790409326880');
+				//for testing environment only.
+								//cX.sendPageViewEvent({ 'location': 'http://www.channelnewsasia.com/news/asiapacific/aggressive-governance-for/1790254.html' });
+				//for production use below
+				cX.sendPageViewEvent();
+			}]);
+
+		}
+	);*/
+  
+   $.ajax({
+                    url: "https://uid.mediacorp.sg/api/Profiles/GetUID?LotameID=" +LotameID + "&CxenseID=" + CxenseID + "&SSOID=" + SSOID + "&UniversalID=" + UniversalID + "&FID=" + fID,
+                    type: "GET",
+                    dataType: "jsonp"
+                });
+   
+//}
+
+
+function getCookie(cname) {
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for (var i = 0; i < ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') c = c.substring(1);
+		if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+	}
+	return "";
+}

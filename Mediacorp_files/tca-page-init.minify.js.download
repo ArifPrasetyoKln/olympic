@@ -1,0 +1,2025 @@
+var isMobile = false;
+$(document).ready(function() {    
+        var mcDataLayer = "";
+  if ($('.gcf__right').length) {
+    $('.gc__caption').html($('.main-image__item.slick-active .main-image__caption').html());
+    $('.gc__header').html($('.main-image__item.slick-active .main-image__header').html());
+    $('.gc__credit').html($('.main-image__item.slick-active .main-image__credit').html());
+    $('.gc__story').html($('.main-image__item.slick-active .main-image__story').html());
+    $('.gc__main-image').on('afterChange', function(slick, currentSlide) {
+      $('.gc__caption').html($('.main-image__item.slick-active .main-image__caption').html());
+      $('.gc__header').html($('.main-image__item.slick-active .main-image__header').html());
+      $('.gc__credit').html($('.main-image__item.slick-active .main-image__credit').html());
+      $('.gc__story').html($('.main-image__item.slick-active .main-image__story').html());
+    });
+  }
+  $('.tgtabs__wrap .tgtabs__row .tgtab a').on('click', function() {
+    if (!$(this).hasClass('selected')) {
+      $(this).parent().parent().find('.selected').removeClass('selected');
+      $(this).toggleClass('selected');
+      if (!$(this).parent().parent().parent().next().find('.tgtab__target').eq($(this).parent().index()).hasClass('is-active')) {
+        $(this).parent().parent().parent().next().find('.is-active').removeClass('is-active');
+      }
+      $(this).parent().parent().parent().next().find('.tgtab__target').eq($(this).parent().index()).toggleClass('is-active');
+    }
+  });
+ 
+  if ($('.celebbio-item.card').length > 0) {
+    $('.celebbio-portfolio.tgtabs .tgtabs__row .tgtab a:first').addClass('selected');
+    
+    /*
+    //chinese image profile https
+    if (location.href.indexOf('/zh/') != -1){
+        var imgProfileOld = $('.celebbio-item.card img').attr('src'),
+        imgProfileNew = imgProfileOld.replace(/http:\/\//g, 'https://');
+        $('.celebbio-item.card img').attr('src',imgProfileNew);
+    }
+    */
+  }
+ 
+  if ($('.megaslider-holder .tgtabs__wrap .tgtabs__row .tgtab').length > 1) {
+    $('.megaslider-holder .tgtabs__wrap .tgtabs__row .tgtab a:first').addClass('selected');
+    $('.megaslider-holder .tgtab__targets .tg-megaslider.tgtab__target:first').addClass('is-active');
+  }
+ 
+  $('.collapsible__toggle').on('click', function() {
+    $(this).parent().parent().toggleClass('is-collapsed');
+  });
+  /**
+   * Toggles Off Canvas Menu On and Off
+   */
+  function toggleLocalNav() {
+    var $localNavToggle = $('.local-nav-label');
+    var $localNav = $('.nav--local').find('.nav');
+    var $localNavVideoExtras = $('.nav--local').find('.nav__video-extras');
+    $localNav.toggleClass('is-open');
+    $localNavToggle.toggleClass('is-open');
+    $localNav.slideToggle(400);
+    // $localNavVideoExtras.toggle(400);
+  }
+  function showLocalNav() {
+    var $localNavToggle = $('.local-nav-label');
+    var $localNav = $('.nav--local').find('.nav');
+    var $localNavVideoExtras = $('.nav--local').find('.nav__video-extras');
+    $localNav.addClass('is-open');
+    $localNavToggle.addClass('is-open');
+    $localNav.show();
+    // $localNavVideoExtras.toggle(400);
+  }
+  function closeModal() {
+    var $modalOverlay = $('.modal-overlay'),
+      $modal = $('.modal');
+    $modalOverlay.removeClass('is-open');
+    $modal.removeClass('is-open');
+  }
+  function closeOffCanvasMenu() {
+    var $body = $('.body');
+    $body.removeClass('primary-menu-open');
+    $('.nav--primary__mobile').find('ul').removeClass('is-open');
+  }
+  function toggleQuickNav() {    
+    var $quicklinksNavToggle = $('.quicklinks-nav-label');
+    var $quicklinksNav = $('.nav--quicklinks').find('.nav');
+    var $quicklinksNavVideoExtras = $('.nav--quicklinks').find('.nav__video-extras');
+    $quicklinksNav.toggleClass('is-open');
+    $quicklinksNavToggle.toggleClass('is-open');
+    $quicklinksNav.slideToggle(400);
+    // $quicklinksNavVideoExtras.toggle(400);
+  }
+  function closePrimaryNavDropdown() {
+    $('.pnav__has-dropdown').removeClass('is-open');
+  }
+  //more nav menu
+  var $localNavToggle = $('.local-nav-label');  
+  var $localNav = $('.nav--local').find('.nav__list');
+  var $localNavMore = $localNav.find('.dropdown');
+  // Total length is children length - more item
+  var localNavChildrenLength = $localNav.children().length - 1;
+  var $moreItems, $moreItemsClone;
+  var moreLimit = parseInt($localNav.attr('data-more-limit'));
+ 
+  // Initializes TCA menu mobile view  
+  $localNavToggle.on('click', function() {    
+    toggleLocalNav();
+    closeOffCanvasMenu();
+    closeModal();
+  });
+ 
+   // Initializes TCA "menu" text mobile view  
+  var $mobNav = $('ul.nav--local__page-info li a');
+  $mobNav.on('click', function(){
+      toggleLocalNav();
+      closeOffCanvasMenu();
+      closeModal();
+  });
+ 
+ 
+  //QuickNav
+  var $QuickNavToggle = $('.quicklinks-nav-label');
+  $QuickNavToggle.on('click', function() {
+    toggleQuickNav();
+  });
+  $('.nav--quicklinks__page-info').on('click', function() {
+    if ($('.quicklinks-nav-label').css('display') != 'none') {
+      toggleQuickNav();
+    }
+  });
+  // Checks for # of items in local nav.
+  // If # of items exceed specified amount, clones an the extra items into "More".
+  // Hides "More" if on mobile, hides extra items on desktop
+  if (localNavChildrenLength > moreLimit) {
+    $moreItems = $localNav.children().not('.nav__video-extras').slice(moreLimit, -1);
+    $moreItemsClone = $moreItems.clone();
+    $moreItemsClone.appendTo($localNavMore.children('ul'));
+  }
+  function toggleMoreItems($moreItems, $localNavMore) {
+    if ($(window).width() >= 980) {
+      $localNavMore.addClass('is-desktop');
+      $moreItems.hide();
+    } else {
+      $localNavMore.removeClass('is-desktop');
+      $moreItems.show();
+    }
+  }
+  if ($moreItems && $moreItemsClone) {
+    toggleMoreItems($moreItems, $localNavMore);
+    $(window).resize(function() {
+      toggleMoreItems($moreItems, $localNavMore);
+      if ($(window).width() > 769) {
+        showLocalNav();
+      }
+    });
+  }
+});
+var checkscreen = function() {
+  var ww = window.innerWidth;
+  if (ww < 767) {
+    $('[class^="celebbio-"].collapsible').addClass('is-collapsed');
+    $('.megaslider-holder.card.collapsible').addClass('is-collapsed');
+    $('.comments.collapsible').removeClass('is-collapsed');
+    $('.comments.collapsible .comments-container').addClass('is-collapsed');
+    $('.collapsible__toggle').addClass('show');
+  } else if (ww >= 768) {
+    $('[class^="celebbio-"].collapsible').removeClass('is-collapsed');
+    $('.megaslider-holder.card.collapsible').removeClass('is-collapsed');
+    $('.comments.collapsible').removeClass('is-collapsed');
+    $('.comments.collapsible .comments-container').removeClass('is-collapsed');
+    $('.collapsible__toggle').removeClass('show');
+  };
+};
+//Fire it when the page first loads:
+checkscreen();
+$(window).resize(function() {
+  checkscreen();
+});
+//fire successUIDCallback
+successUIDCallback = false;
+jQuery.fn.dropkick = function() {
+  var args = Array.prototype.slice.call(arguments);
+  return $(this).each(function() {
+    if (!args[0] || typeof args[0] === 'object') {
+      new Dropkick(this, args[0] || {});
+    } else if (typeof args[0] === 'string') {
+      Dropkick.prototype[args[0]].apply(new Dropkick(this), args.slice(1));
+    }
+  });
+};
+// VARIABLES
+var currSlide = 0;
+// FUNCTIONS
+var setupGalleryDimensions = function() {
+  var galleryHeight = $('.gc__main').height($('.gc__main').width() * 0.66);
+  $('.gc__main').height($('.gc__main').width() * 0.66);
+  $('.gc__main .gc__main-image .main-image__item picture').height($('.gc__main').width() * 0.66);
+  var galHeight = $('.gc__main').height();
+  $('.gc__main .gc__main-image .main-image__item').each(function() {
+    var thisPic = $(this).find('picture img');
+    thisPic.css('width', 'auto');
+    thisPic.css('height', 'auto');
+    var picWidth = thisPic.width();
+    var picHeight = thisPic.height();
+    imagesLoaded($(window), function() {
+      if (picHeight >= galHeight) {
+        thisPic.css('width', 'auto');
+        thisPic.css('height', '100%');
+      }
+      if (picHeight <= galHeight) {
+        var currentPicHeight = galHeight - thisPic.height();
+        thisPic.css('top', currentPicHeight / 2);
+        //thisPic.css('width','100%');
+      }
+    });
+  });
+}
+var slidezUpdate = function(slideNum) {
+  // Update the url
+  window.location.hash = "slideshow-" + (slideNum.currentSlide + 1);
+  if ($('.main-image__item').hasClass('more-galleries')) {
+    // Show current slide index
+    $('.gc__main-image--index').text((slideNum.currentSlide + 1) + '/' + (slideNum.slideCount - 1));
+    if (slideNum.currentSlide + 1 > slideNum.slideCount - 1) {
+      $('.gc__hide-on-last').hide();
+    } else {
+      $('.gc__hide-on-last').show();
+    }
+  } else {
+    // Show current slide index without more galleries
+    $('.gc__main-image--index').text((slideNum.currentSlide + 1) + '/' + slideNum.slideCount);
+  }
+  // Update the url for full screen gallery
+  $('.gc__main-image--fullscreen a').attr('href', '?photogalleryfullscreen=true#slideshow-' + (slideNum.currentSlide + 1));
+  // Show the caption/header/credit/description
+  $('.gc__caption').html($('.main-image__item.slick-active .main-image__caption').html());
+  $('.gc__header').html($('.main-image__item.slick-active .main-image__header').html());
+  $('.gc__credit').html($('.main-image__item.slick-active .main-image__credit').html());
+  $('.gc__story').html($('.main-image__item.slick-active .main-image__story').html());
+}
+var highlightNavSlide = function(_slideNum) {
+  $('.nav-image__item').removeClass('item-slick-selectedz');
+  $('.nav-image__item[data-slick-index="' + _slideNum.currentSlide + '"]').addClass('item-slick-selectedz');
+}
+var setupSlideNav = function(slides) {
+  $('.nav-image__item').click(function() {
+    var navSlideNow = $(this).attr('data-slick-index');
+    $('.gc__main-image').slick('slickGoTo', navSlideNow);
+    var mainCount = $('.main-image__item').length;
+    var navCount = $('.gc__slider-nav li').length;
+    var diffCount = mainCount - navCount;
+    if ((mainCount - 2) > navCount) $('.gc__slider-nav').slick('slickGoTo', (navCount - 1));
+  });
+}
+function sliderControl(slideOrder) {
+  $('.gc__slider-nav').find('.slick-track').find('.nav-image__item').each(function() {
+    var itemNumz = $(this).attr('data-slick-index');
+    if (itemNumz == slideOrder) {
+      $('.gc__slider-nav .slick-track .nav-image__item').removeClass('item-slick-selectedz');
+      $(this).addClass('item-slick-selectedz');
+    }
+  });
+  slidezUpdate(slideOrder);
+}
+/*
+ ** slider image optimized on 3/9/2019
+ */
+jQuery(document).ready(function($) {
+  var hashz = window.location.hash;
+  var hashzSub = hashz.substr(11);
+  var mainCount = $('.main-image__item').length;
+  if (hashzSub == '') {
+    hashzSub = 1;
+  }
+  if ($('.gc__main-image').length) {
+    $('.gc__main-image').on('init', function(slick) {
+      setupGalleryDimensions();
+      if ($('.main-image__item').hasClass('more-galleries')) {
+        // Show current slide index
+        $('.gc__main-image--index').text(hashzSub + '/' + (mainCount - 1));
+      } else {
+        // Show current slide index without more galleries
+        $('.gc__main-image--index').text(hashzSub + '/' + mainCount);
+      }
+      // Update the url for full screen gallery
+      $('.gc__main-image--fullscreen a').attr('href', '?photogalleryfullscreen=true#slideshow-' + hashzSub);
+      $('.gc__caption').html($('.main-image__item.slick-active .main-image__caption').html());
+      $('.gc__header').html($('.main-image__item.slick-active .main-image__header').html());
+      $('.gc__credit').html($('.main-image__item.slick-active .main-image__credit').html());
+      $('.gc__story').html($('.main-image__item.slick-active .main-image__story').html());
+    });
+    $('.gc__slider-nav').on('init', function(slick) {
+      $('.nav-image__item[data-slick-index="' + (hashzSub - 1) + '"]').addClass('item-slick-selectedz');
+      setupSlideNav();
+    });
+    $('.gc__main-image').slick({
+      dots: true,
+      infinite: false,
+      prevArrow: $('.gc__main-slider-arrows.left'),
+      nextArrow: $('.gc__main-slider-arrows.right'),
+      initialSlide: hashzSub - 1,
+      asNavFor: '.gc__slider-nav',
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    });
+    $('.gc__main-image').on('afterChange', function(slick, currentSlide) {
+      sliderControl(currentSlide);
+      highlightNavSlide(currentSlide);
+    });
+    $('.gc__slider-nav').slick({
+      infinite: false,
+      prevArrow: $('.gc__slider-nav-arrows.left'),
+      nextArrow: $('.gc__slider-nav-arrows.right'),
+      centerMode: false,
+      initialSlide: hashzSub - 1,
+      slidesToShow: 6,
+      slidesToScroll: 1,
+      dots: true,
+      asNavFor: '.gc__main-image',
+      focusOnSelect: true
+    });
+  }
+  $(window).resize(function() {
+    setupGalleryDimensions();
+  });
+});
+$(window).on('load',function() {
+  setupGalleryDimensions();
+});
+// jQuery Expander
+jQuery(document).ready(function($) {
+    var $expander = $('.expander');
+    if ($expander.length) {
+        $expander.expander({
+            slicePoint: 1000,
+            widow: 0,
+            expandText: '<i class="ti-more"></i><span>More Details</span>',
+            expandPrefix: '&hellip;',
+            userCollapseText: '<i class="ti-less"></i><span>View Less</span>',
+            moreClass: 'more-details',
+            lessClass: 'less-details',
+            expandEffect: 'slideDown',
+            collapseEffect: 'slideUp',
+        });
+    }
+});
+window.allSliders;
+jQuery(document).ready(function($) {      
+    // =======
+    // Sliders
+    // =======
+    var Sliders = window.Sliders || {};
+    var Slider = window.Slider || {};
+    Sliders = function($els, sliderConfig) {
+        var S = this;
+        // settings for all megasliders
+        this.globalSettings = {
+            hasCssTransitions: false,
+            hasCss3dTransforms: false,
+            gutterWidth: 20,
+            sliderWidth: 0,
+        };
+        // initial settings per megaslider type
+        // --------------
+        // gutterWidth: 0,
+        // itemsToShow: null,
+        // itemsToSlide: 1,
+        // itemWidth: 0,
+        // sliderHeight: 0,
+        this.typeSettings = {}
+        this.sliderConfig = sliderConfig;
+        // loops through sliderConfig, add sliders that are present on page to typeSettings.
+        _.forEach(this.sliderConfig, function(index, key) {
+            var $megasliderType = $(S.sliderConfig[key].targetClass).not(S.sliderConfig[key].ignoredClasses);
+            if ($megasliderType.length) {
+                S.typeSettings[key] = {}
+                S.typeSettings[key].$els = $megasliderType;
+                S.typeSettings[key].config = S.sliderConfig[key];
+            }
+        });
+        this.initialize();
+        return this;
+    }
+    Sliders.prototype = {
+        constructor: Sliders,
+        // ===========================
+        // Global Megaslider Functions
+        // ===========================
+        // Initializes Sliders
+        // -------------------
+        initialize: function() {
+            var ww = $(window).width();
+            var s = this;
+            this.getPrefixes();
+            this.detectFeatures();
+            this.buildSliders();
+            this.calculateSliderProperties(ww);
+            this.updateSliderSettings(ww);
+            $(window).resize($.debounce(150, false, function() {
+                // ensures ios scroll doesn't trigger resize
+                if (ww != $(window).width()) {
+                    ww = $(window).width();
+                    // Initialize sliders that aren't initialized.
+                    s.calculateSliderProperties(ww);
+                    s.updateSliderSettings(ww);
+                    s.resetSliderToStart();
+                }
+            }));
+        },
+        // Get Prefixes
+        // ------------
+        // Gets prefixes required for user browser
+        getPrefixes: function() {
+            var styles = window.getComputedStyle(document.documentElement, ''),
+                pre = (Array.prototype.slice
+                    .call(styles)
+                    .join('')
+                    .match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o'])
+                )[1],
+                dom = ('WebKit|Moz|MS|O').match(new RegExp('(' + pre + ')', 'i'))[1];
+            this.globalSettings.prefixes = {
+                dom: dom,
+                lowercase: pre,
+                css: '-' + pre + '-',
+                js: pre[0].toUpperCase() + pre.substr(1)
+            };
+        },
+        // Detect Features
+        // ---------------
+        // Checks whether browser supports certain CSS features
+        detectFeatures: function() {
+            if (Modernizr.csstransitions) {
+                this.globalSettings.hasCssTransitions = true;
+            }
+            if (Modernizr.csstransforms3d) {
+                this.globalSettings.hasCss3dTransforms = true;
+            }
+        },
+        // Build Sliders
+        // -------------
+        // Loops through each slider megaslider type,
+        // - builds all megasliders within
+        // - gives it a reference number
+        // - add it to a reference array for easy get
+        buildSliders: function() {
+            var S = this;
+            var ref = 1;
+            // Loops through each megaslider type
+            _.forIn(this.typeSettings, function(val, type) {
+                // Create refArray to store slider references
+                S.typeSettings[type].refArray = [];
+                _.forEach(val.$els, function(el, key) {
+                    // Creates individual slider
+                    el.slider = new Slider(el, ref, type, S.globalSettings);
+                    // Pushes slider into reference array
+                    S.typeSettings[type].refArray.push({
+                        el: el,
+                        ref: ref
+                    });
+                    ref = ref + 1;
+                });
+            });
+            this.totalSliders = ref;
+        },
+        // Calculate Slider Properties
+        // ---------------------------
+        // Loops through each megaslider type
+        // - calculates the following properties
+        //    + gutterWidth
+        //    + itemsToShow
+        //    + itemsToSlide
+        //    + itemWidth
+        //    + sliderHeight
+        calculateSliderProperties: function(ww) {
+            var S = this;
+            _.forIn(this.typeSettings, function(val, megaSliderType) {
+                var config = val.config;
+                var innerConfig = config.config;
+                S.setItemsToShow(megaSliderType, innerConfig.numItemsToShow, ww);
+                S.setItemsToSlide(megaSliderType);
+                S.setItemWidth(megaSliderType, ww);
+                S.setItemHeight(megaSliderType, ww);
+                S.setInnerItemProps(megaSliderType, ww);
+            });
+        },
+        // Set Items To Show
+        // -----------------
+        // Sets number of items to show for megaslider type at different breakpoints
+        // - megaSliderType : <String>
+        // - numItemsToShow : <Object> containing breakpoint and number of items to show
+        // - ww             : <int> window width
+        setItemsToShow: function(megaSliderType, numItemsToShow, ww) {
+            var itemsToShow;
+            _.forIn(numItemsToShow, function(val, key) {
+                if (ww > parseInt(key)) {
+                    itemsToShow = val;
+                }
+            })
+            this.typeSettings[megaSliderType].itemsToShow = itemsToShow;
+        },
+        // Set Items To Slide
+        // ------------------
+        // Sets the number of items to slide
+        setItemsToSlide: function(megaSliderType) {
+            this.typeSettings[megaSliderType].itemsToSlide = Math.floor(this.typeSettings[megaSliderType].itemsToShow);
+        },
+        // Set Item Width
+        // --------------
+        // Calculates item width of each megaslider type and sets it to typeSettings obj
+        setItemWidth: function(megaSliderType, ww) {
+            var $el = this.$el,
+                $items = this.$items,
+                $$type = this.typeSettings[megaSliderType],
+                $$slider,
+                wrapWidth,
+                itemWidth,
+                itemsToShow = $$type.itemsToShow,
+                gutterWidth = this.globalSettings.gutterWidth,
+                totalGutterWidth;
+            // Gets wrapWidth and $$slider that is displayed
+            for (var i = 0; i < $$type.refArray.length; i++) {
+                $$slider = $$type.refArray[i].el.slider;
+                wrapWidth = $$slider.$wrap.width();
+                if (wrapWidth > 0) {
+                    break;
+                }
+            };
+            // If wrap width is STILL 0, means no such slider is present.
+            // In this case, remove all slider reference for this slider.
+            // Calculates total width
+            totalGutterWidth = (itemsToShow - 1) * gutterWidth;
+            // Calculates Item width
+            itemWidth = Math.round((wrapWidth - totalGutterWidth) / itemsToShow);
+            // Sets wrap with back to typeSettings obj
+            $$type.wrapWidth = wrapWidth;
+            $$type.itemWidth = itemWidth;
+        },
+        // Set Item Height
+        // ---------------
+        // Sets the height for each type of megaslider
+        // Calculations are hardcoded depending on the type of slider. Magic number height.
+        setItemHeight: function(megaSliderType, ww) {
+            var $el = this.$el,
+                $$type = this.typeSettings[megaSliderType],
+                $$slider = $$type.refArray[0].el.slider,
+                itemWidth = $$type.itemWidth,
+                itemHeight;
+            // Initialize variables to calculate height
+            var heightProps;
+            switch (megaSliderType) {
+                // Standard megasliders, too many combinations. Use magic number
+                case "megaSlider":
+                    itemHeight = 1.02 * itemWidth;
+                    break;
+                case "megaSliderSingle":
+                case "megaSliderIn8":
+                case "megaSliderIn4":
+                case "megaSlider3up":
+                    var heightProps = {
+                        titleLines: 2,
+                        titleLineHeight: 16 * 1.25,
+                        titleMargins: 16 * 0.625,
+                        metaLines: 2,
+                        metaLineHeight: 16 * 1.2,
+                        metaMargins: 16 * 0.3125 * 2,
+                        imageHeight: itemWidth * 9 / 16
+                    }
+                    itemHeight = heightProps.titleLines * heightProps.titleLineHeight + heightProps.titleMargins + heightProps.metaLines * heightProps.metaLineHeight + heightProps.metaMargins + heightProps.imageHeight;
+                    itemHeight = Math.round(itemHeight);
+                    break;
+                case "megaSliderPortrait":
+                case "megaSlider3upPortrait":
+                    var heightProps = {
+                        titleLines: 2,
+                        titleLineHeight: 16 * 1.25,
+                        titleMargins: 16 * 0.625,
+                        metaLines: 2,
+                        metaLineHeight: 16 * 1.2,
+                        metaMargins: 16 * 0.3125 * 2,
+                        imageHeight: itemWidth * 4 / 3
+                    }
+                    itemHeight = heightProps.titleLines * heightProps.titleLineHeight + heightProps.titleMargins + heightProps.metaLines * heightProps.metaLineHeight + heightProps.metaMargins + heightProps.imageHeight;
+                    itemHeight = Math.round(itemHeight);
+                    break;
+                default:
+                    itemHeight = itemWidth;
+            }
+            // end switch
+            $$type.itemHeight = itemHeight;
+        },
+        // Set Inner Item Props
+        // --------------------
+        // Calculates inner item properties for megasliders with 3 and 4 items.
+        setInnerItemProps: function(megaSliderType, ww) {
+            if (megaSliderType == 'megaSlider') {
+                var $el = this.$el,
+                    $$type = this.typeSettings[megaSliderType],
+                    $$refArray = $$type.refArray,
+                    gutterWidth = this.globalSettings.gutterWidth,
+                    oneItemSample = null,
+                    oneItemProp = {},
+                    threeItemSample = null,
+                    threeItemProp = {},
+                    fourItemSample = null,
+                    fourItemProp = {};
+                // get arrays to iterate over to find 3 & 4 item samples.
+                var arrays = _.chain($$refArray).pluck('el').pluck('slider').pluck('$items').flatten();
+                // Find threeItemSample and fouritemsample
+                arrays.forEach(function(jq_item) {
+                    $(jq_item).each(function(index, item) {
+                        if (threeItemSample == null && $(item).hasClass("megaslider__item--3")) {
+                            threeItemSample = item;
+                        } else if (fourItemSample == null && $(item).hasClass("megaslider__item--4")) {
+                            fourItemSample = item;
+                        } else if (oneItemSample == null && $(item).hasClass("megaslider__item--featured")) {
+                            oneItemSample = item;
+                        }
+                        // Breaks loop once all 3 items are found
+                        if (oneItemSample && threeItemSample && fourItemSample) {
+                            return false;
+                        }
+                    });
+                });
+                if (oneItemSample && ww >= 760) {
+                    var $oneItemSample = $(oneItemSample)
+                    var $itemTitle = $oneItemSample.find('.item__title');
+                    var $meta = $oneItemSample.find('.meta');
+                    var $desc = $oneItemSample.find('.desc');
+                    oneItemProp.imageHeight = Math.floor($$type.itemWidth * 9 / 16);
+                    oneItemProp.titleLines = 2;
+                    oneItemProp.titleLineHeight = Math.floor(parseInt($itemTitle.css('line-height')));
+                    oneItemProp.titleHeight = oneItemProp.titleLines * oneItemProp.titleLineHeight;
+                    oneItemProp.metaLines = 1;
+                    oneItemProp.metaLineHeight = Math.floor(parseInt($meta.css('line-height')));
+                    oneItemProp.descLines = 2;
+                    oneItemProp.descLineHeight = Math.floor(parseInt($desc.css('line-height')));;
+                    oneItemProp.descHeight = oneItemProp.descLines * oneItemProp.descLineHeight;
+                    oneItemProp.totalMargins = Math.floor(parseInt($itemTitle.css('margin-top')) + parseInt($meta.css('margin-top')) + parseInt($meta.css('margin-bottom')));
+                }
+                if (threeItemSample && ww >= 760) {
+                    threeItemProp.imageHeight = Math.floor(($$type.itemHeight - gutterWidth * 2) / 3);
+                    threeItemProp.imageWidth = Math.floor(threeItemProp.imageHeight * 16 / 9);
+                    threeItemProp.marginBottom = gutterWidth * 0.5;
+                    threeItemProp.paddingBottom = gutterWidth * 0.5;
+                    threeItemProp.itemInfoMargin = gutterWidth * 0.5 + threeItemProp.imageWidth;
+                }
+                if (fourItemSample && ww >= 760) {
+                    var $fourItemSample = $(fourItemSample);
+                    var $itemTitle = $fourItemSample.find('.item__title');
+                    var $meta = $fourItemSample.find('.meta');
+                    var $desc = $fourItemSample.find('.desc');
+                    fourItemProp.titleLines = 2;
+                    fourItemProp.titleHeight = Math.ceil(parseInt($itemTitle.css('font-size')) * 2.25);
+                    fourItemProp.metaLines = 1;
+                    fourItemProp.metaLineHeight = Math.ceil(parseInt($meta.css('line-height')));
+                    fourItemProp.totalMargins = Math.floor(parseInt($itemTitle.css('margin-top')) + parseInt($meta.css('margin-bottom')) + parseInt($meta.css('margin-top')));
+                    fourItemProp.itemWidth = Math.floor(($$type.itemWidth - gutterWidth / 2) / 2);
+                    fourItemProp.imageHeight = Math.floor(fourItemProp.itemWidth * 9 / 16);
+                    fourItemProp.innerItemHeight = fourItemProp.titleHeight + fourItemProp.metaLines * fourItemProp.metaLineHeight + fourItemProp.totalMargins +
+                        fourItemProp.imageHeight;
+                    fourItemProp.verticalGutter = Math.floor($$type.itemHeight - fourItemProp.innerItemHeight * 2);
+                }
+                $$type.oneItemProp = oneItemProp;
+                $$type.threeItemProp = threeItemProp;
+                $$type.fourItemProp = fourItemProp;
+            }
+        },
+        // Update Slider Settings
+        // ----------------------
+        // Sends command to individual sliders and makes them update their settings to reflect changes to typeSettings.
+        updateSliderSettings: function(ww) {
+            var S = this;
+            _.forIn(this.typeSettings, function(val, megasliderType) {
+                var config = val.config;
+                _.forEach(val.refArray, function(obj, key) {
+                    obj.el.slider.updateSettings(val, ww);
+                })
+            })
+        },
+        // Reset slider to start
+        // ------------
+        // Reset slider currLeft to 0 when resize
+        resetSliderToStart: function() {
+            var S = this;
+            _.forIn(this.typeSettings, function(val, megaSliderType) {
+                _.forEach(val.refArray, function(obj) {
+                    obj.el.slider.resetSliderToStart();
+                })
+            })
+        }
+    };
+    // =================
+    // Individual Slider
+    // =================
+    Slider = function(el, ref, type, globalSettings) {
+        this.settings = {
+            type: type,
+            reference: ref,
+            oldEvent: null,
+            currentLeft: 0,
+            currentIndex: 0,
+            totalItems: null,
+            slideLocations: [],
+            hasAllShownOnMobile: false,
+        }
+        this.globalSettings = globalSettings;
+        // Save elements for easy reference
+        this.$el = $(el);
+        this.$items = this.$el.find('.megaslider__item');
+        // Initializes slider
+        this.initializeSlider(ref, type);
+        this.$el.addClass('has-loaded');      
+        return this;
+    }
+    Slider.prototype = {
+        constructor: Slider,
+        // ===================
+        // Initializing Slider
+        // ===================
+        initializeSlider: function(ref, type) {
+            var ww = $(window).width();
+            // this.ref = ref;
+            this.buildWrap(ref, type);
+            this.buildArrows();
+            this.buildMoreButton();
+            this.registerClickHandlers(ww);
+            this.registerSwipeHandlers(ww);
+            this.setTotalItems();
+        },
+        // Build Wrap
+        // ----------
+        // Builds slider wrap + add slider reference and type
+        buildWrap: function(ref, type) {
+            var $el = this.$el;
+            $el.children().wrapAll('<div class="slider-wrap" data-ref="' + ref + '" data-type="' + type + '"><div class="slider-row"></div></div>"');
+            this.$wrap = $el.find('.slider-wrap');
+            this.$row = $el.find('.slider-row');
+        },
+        // Build Arrows
+        // ------------
+        // Build slider arrows + add event handlers
+        buildArrows: function() {
+            var s = this;
+            var $el = this.$el;
+            // Creates arrows
+            $el.append('<a href="#" class="slider-prev"><i class="ti-slider-prev"></i></a><a href="#" class="slider-next"><i class="ti-slider-next"></i></a> ');
+            // Create quick references to arrows
+            this.$prevArrow = $el.find('.slider-prev');
+            this.$nextArrow = $el.find('.slider-next');
+        },
+        // Build More Button
+        // -----------------
+        // Builds load more button that shows all items on mobile megasliders.
+        buildMoreButton: function() {
+            var s = this;
+            var $el = s.$el;
+            $el.append('<a href="#" class="btn tg-load-more">Show More</a>');
+            this.$loadMore = $el.find('.tg-load-more');
+        },
+        // Register Click Handlers
+        // ------------
+        // Register click handlers for
+        // - prev arrow
+        // - next arrow
+        // - load more button
+        registerClickHandlers: function() {
+            var s = this;
+            var $el = s.$el;
+            var prefix = this.globalSettings.prefixes;
+            this.$prevArrow.on('click', _.throttle(function(event) {
+                var ww = $(window).width();
+                event.preventDefault();
+                event.data = {
+                    message: 'prev'
+                };
+                if (s.globalSettings.hasCssTransitions) {
+                    s.setCss(s.$row[0], 'transition', '0.5s ease-out', prefix);
+                }
+                s.changeSlideOnClick(event);
+                s.checkArrowStates(ww);
+                if (s.globalSettings.hasCssTransitions) {
+                    _.debounce(function() {
+                        s.setCss(s.$row[0], 'transition', 'none', prefix);
+                    }, 500);
+                }
+            }, 500));
+            this.$nextArrow.on('click', _.throttle(function(event) {
+                var ww = $(window).width();
+                event.preventDefault();
+                event.data = {
+                    message: 'next'
+                };
+                if (s.globalSettings.hasCssTransitions) {
+                    s.setCss(s.$row[0], 'transition', '0.5s ease-out', prefix);
+                }
+                s.changeSlideOnClick(event);
+                s.checkArrowStates(ww);
+                if (s.globalSettings.hasCssTransitions) {
+                    _.debounce(function() {
+                        s.setCss(s.$row[0], 'transition', 'none', prefix);
+                    }, 500);
+                }
+                s.toggleShowImage(ww);
+                // forceRedraw($el);
+            }, 500));
+            this.$loadMore.on('click', function(event) {
+                var ww = $(window).width();
+                event.preventDefault();
+                s.settings.hasAllShownOnMobile = true;
+                s.showMoreItems(ww);
+                toggle.functions.showImage($el);
+                // remove load more button once load more is clicked
+                $(this).remove();
+            });
+        },
+        // Register Swipe Handlers
+        // -----------------------
+        registerSwipeHandlers: function(ww) {
+            var s = this;
+            var $el = this.$el;
+            var prefix = this.globalSettings.prefixes;
+            this.hammer = new Hammer(this.$row[0]);
+            this.hammer.get('pan').set({
+                direction: Hammer.DIRECTION_HORIZONTAL
+            });
+            s.hammer.on('panstart panmove panend pancancel', function(event) {
+                if ($(window).width() > 760) {
+                    switch (event.type) {
+                        // Panstart
+                        case 'panstart':
+                            s.settings.oldEvent = event;
+                            s.setCss(s.$row[0], 'transition', 'none', prefix);
+                            break;
+                            // Panmove
+                        case 'panmove':
+                            s.panHandler(event);
+                            break;
+                            // Panend
+                        case 'panend':
+                            s.setCss(s.$row[0], 'transition', 'all 0.5s ease-out', prefix);
+                            s.panendHandler(event);
+                            s.checkArrowStates(ww);
+                            // s.toggleShowImage(ww);
+                            s.settings.oldEvent = null;
+                            break;
+                        default:
+                            return false;
+                    }
+                }
+            });
+        },
+        // Set Total Items
+        // ---------------
+        // Sets the total number of items for the slider
+        setTotalItems: function() {
+            this.settings.totalItems = this.$items.length;
+        },
+        // Set Slider Settings
+        // -------------------
+        // Sets common slider settings that have to change depending on browser width.
+        updateSettings: function(val, ww) {
+            // set Megaslider type settings into typeSettings property for easy access
+            this.typeSettings = val;
+            this.setSliderWidth();
+            this.setSliderHeight(ww);
+            this.setItemCss(ww);
+            this.checkArrowStates(ww);
+            this.showMoreItems(ww);
+            // Resets index to 0;
+            this.settings.currentIndex = 0;
+            this.settings.currentLeft = 0;
+            this.transformCss();
+        },
+        // Set Slider Width
+        // ----------------
+        // Calculates slider width based on the number of items
+        setSliderWidth: function() {
+            this.settings.sliderWidth = Math.floor(this.typeSettings.itemWidth * this.settings.totalItems);
+            this.$row.css('width', this.settings.sliderWidth);
+        },
+        // Set Slider Height
+        // -----------------
+        setSliderHeight: function(ww) {
+            this.sliderHeight = this.typeSettings.itemHeight;
+            if (ww >= 760) {
+                this.$wrap.css('height', this.sliderHeight);
+            } else {
+                this.$wrap.css('height', 'auto');
+            }
+        },
+        // Set Item Css
+        // ------------
+        // Sets CSS for each individual megaslider item
+        setItemCss: function(ww) {
+            var s = this,
+                gutterWidth = this.globalSettings.gutterWidth,
+                itemWidth = this.typeSettings.itemWidth,
+                itemHeight = this.typeSettings.itemHeight,
+                itemWidthWithBorders = itemWidth + 0.5 * gutterWidth,
+                posX = 0;
+            this.settings.slideLocations = [];
+            if (ww >= 760) {
+                _.forEach(this.$items, function(el, index) {
+                    $(el).css({
+                        position: 'absolute',
+                        top: 0,
+                        left: posX,
+                        width: itemWidthWithBorders,
+                        height: itemHeight,
+                        paddingRight: gutterWidth * 0.5
+                    });
+                    s.settings.slideLocations.push(posX);
+                    posX = posX + itemWidth + gutterWidth
+                });
+            } else {
+                this.$items.css({
+                    position: 'relative',
+                    left: 'auto',
+                    height: 'auto',
+                    width: '100%',
+                    paddingRight: 0,
+                });
+            }
+            this.setInnerItemCss(ww);
+            this.setArrowPos();
+        },
+        // Set Inner Item Css
+        // ------------------
+        // Sets inner CSS for megasliders with 3 and 4 items
+        setInnerItemCss: function(ww) {
+            var oneItemProp = this.typeSettings.oneItemProp;
+            var threeItemProp = this.typeSettings.threeItemProp;
+            var fourItemProp = this.typeSettings.fourItemProp;
+            if (oneItemProp) {
+                var $oneItems = this.$items.filter('.megaslider__item--featured').find('.tg-teaser-item');
+                if (ww >= 760) {
+                    $oneItems.find('.desc').css({
+                        height: oneItemProp.descHeight
+                    });
+                    $oneItems.find('.item__title').css({
+                        maxHeight: oneItemProp.titleHeight
+                    });
+                } else {
+                    $oneItems.find('.desc').css({
+                        height: 'auto'
+                    });
+                    $oneItems.find('.item__title').css({
+                        maxHeight: 'none'
+                    });
+                }
+            }
+            if (threeItemProp) {
+                var $threeItems = this.$items.filter('.megaslider__item--3').find('.tg-list-item')
+                if (ww >= 760) {
+                    $threeItems.css({
+                        marginBottom: threeItemProp.marginBottom,
+                        paddingBottom: threeItemProp.paddingBottom
+                    });
+                    $threeItems.filter(':last-child').css({
+                        marginBottom: 0,
+                        paddingBottom: 0
+                    });
+                    $threeItems.children('a').css({
+                        height: threeItemProp.imageHeight,
+                        width: threeItemProp.imageWidth
+                    });
+                    $threeItems.children('.item__info').css({
+                        marginLeft: threeItemProp.itemInfoMargin
+                    });
+                } else {
+                    $threeItems.css({
+                        marginBottom: 24,
+                        paddingBottom: 0
+                    });
+                }
+            }
+            if (fourItemProp) {
+                var $fourItems = this.$items.filter('.megaslider__item--4').find('.tg-teaser-item');
+                if (ww >= 760) {
+                    $fourItems.css({
+                        float: 'left',
+                        width: fourItemProp.itemWidth,
+                        height: fourItemProp.innerItemHeight,
+                        marginTop: fourItemProp.verticalGutter,
+                        marginBottom: 0,
+                    });
+                    $fourItems.filter(function(index) {
+                        return $(this).index() === 0 || $(this).index() === 1;
+                    }).css({
+                        marginTop: 0,
+                    });
+                    $fourItems.filter(':odd').css('float', 'right');
+                } else {
+                    $fourItems.css({
+                        float: 'left',
+                        width: '100%',
+                        height: 'auto',
+                        marginTop: 0,
+                        marginBottom: 24,
+                    });
+                }
+            }
+        },
+        // Set Arrow Pos
+        // ------------
+        // Sets arrow position correctly for each slider
+        setArrowPos: function() {
+            var arrowCss = {
+                position: 'absolute',
+                display: 'block',
+                top: '0',
+                bottom: '0',
+                height: '100%',
+                margin: 'auto'
+            }
+            this.$prevArrow.css(arrowCss)
+            this.$nextArrow.css(arrowCss)
+        },
+        // ============
+        // Interactions
+        // ------------
+        // For things that happen on click / swipe
+        // ============
+        // Change Slide On Click
+        // ---------------------
+        // Determines which slide to switch to when arrows are clicked
+        changeSlideOnClick: function(event) {
+            var targetIndex,
+                currentIndex = this.settings.currentIndex,
+                itemsToSlide = this.typeSettings.itemsToSlide,
+                totalItems = this.settings.totalItems,
+                lastIndex = totalItems - 1,
+                eventMessage = event.data.message;
+            // Sets target index
+            if (eventMessage == 'prev') {
+                targetIndex = currentIndex - itemsToSlide;
+                // Sets minimum target index to be 0
+                if (targetIndex < 0) {
+                    targetIndex = 0;
+                }
+            } else {
+                targetIndex = currentIndex + itemsToSlide;
+                // Sets maximum target index to make sure last item on the megaslider is never exceeded
+                if (targetIndex + itemsToSlide > lastIndex) {
+                    targetIndex = totalItems - itemsToSlide;
+                }
+            }
+            this.settings.currentIndex = targetIndex;
+            this.setSlide();
+        },
+        // Set Slide
+        // ---------
+        // Sets slide to target index
+        setSlide: function() {
+            var s = this;
+            var index = this.settings.currentIndex;
+            var targetLeft;
+            targetLeft = this.settings.slideLocations[index];
+            this.settings.currentLeft = targetLeft;
+            this.transformCss();
+        },
+        // Pan Handler
+        // -----------
+        panHandler: function(event) {
+            var s = this;
+            var delta = event.deltaX - this.settings.oldEvent.deltaX;
+            this.settings.currentLeft = this.settings.currentLeft - delta;
+            this.transformCss();
+            s.settings.oldEvent = event;
+        },
+        // Panend Handler
+        // ------------
+        panendHandler: function(event) {
+            var deltaX = event.deltaX;
+            var modifier = (deltaX < 0) ? 1 : -1;
+            var currLeft = this.settings.currentLeft;
+            var itemsToSlide = this.typeSettings.itemsToSlide;
+            var totalItems = this.settings.totalItems;
+            var closestLeft = this.getClosestItem(currLeft);
+            var closestSlide = this.settings.slideLocations.indexOf(closestLeft);
+            var targetSlide = closestSlide;
+            // console.log('closestLeft', closestLeft);
+            // console.log('currLeft', currLeft);
+            // console.log('closestSlide', closestSlide);
+            // Swipe left
+            if (modifier === 1) {
+                if (closestLeft < currLeft) {
+                    targetSlide += modifier;
+                }
+                if (targetSlide >= totalItems - 1 - itemsToSlide) {
+                    targetSlide = totalItems - itemsToSlide;
+                }
+            }
+            // Swipe right
+            else {
+                if (closestLeft > currLeft) {
+                    targetSlide += modifier;
+                }
+                if (targetSlide < 0) {
+                    targetSlide = 0;
+                }
+            }
+            this.settings.currentLeft = this.settings.slideLocations[targetSlide];
+            this.transformCss();
+        },
+        // Show More Items
+        // ------------
+        // Logic to handle show more button for megaslider mobile
+        showMoreItems: function(ww) {
+            var s = this;
+            var $allItems = this.$el.find('.tg-teaser-item, .tg-list-item, .tg-teaser-item--portrait, .tg-list-item--portrait');
+            if ($allItems.length <= 3) {
+                this.$el.find('.tg-load-more').hide();
+            }
+            if (ww < 760) {
+                $allItems.slice(3).hide();
+                this.$loadMore.show();
+            } else {
+                $allItems.show();
+                this.$loadMore.hide();
+            }
+            if (s.settings.hasAllShownOnMobile) {
+                $allItems.show();
+                this.$loadMore.remove();
+            }
+        },
+        // Change To Closest
+        // -----------------
+        // Change to closest item after slide.
+        changeToClosest: function() {
+            var currLeft = this.settings.currentLeft,
+                itemsToSlide = this.typeSettings.itemsToSlide,
+                totalItems = this.settings.totalItems;
+            var closestLeft = this.getClosestItem(currLeft);
+            var closestSlide = this.settings.slideLocations.indexOf(closestLeft);
+            if (closestSlide < 0) {
+                closestSlide = 0;
+            } else if (closestSlide >= totalItems - 1 - itemsToSlide) {
+                closestSlide = totalItems - itemsToSlide;
+            }
+            this.settings.currentLeft = this.settings.slideLocations[closestSlide];
+            this.settings.currentIndex = closestSlide;
+            this.transformCss();
+        },
+        // Transform Css
+        // -------------
+        // Sets amount to transform and calls set Css.
+        transformCss: function() {
+            var targetLeft = this.settings.currentLeft;
+            var transformValue;
+            var prefix = this.globalSettings.prefixes.js;
+            if (this.globalSettings.hasCssTransitions) {
+                transformValue = this.globalSettings.hasCss3dTransforms ? 'translate3d(' + -targetLeft + 'px, 0,0)' : 'translate(' + -targetLeft + 'px, 0)';
+                this.setCss(this.$row[0], 'transform', transformValue, prefix);
+            } else {
+                this.$row.animate({
+                    left: -targetLeft
+                }, 500)
+            }
+        },
+        // Sets CSS with Prefixes
+        // ----------------------
+        setCss: function(elem, property, value, prefix) {
+            var s = this,
+                prefixedProp,
+                unprefixedProp;
+            // Ensures first property is uppercase to set vendor prefixes    
+            prefixedProp = prefix + property.charAt(0).toUpperCase() + property.slice(1);
+            // Ensures first letter is lowercase to set prop w/o prefixes
+            unprefixedProp = property.charAt(0).toLowerCase() + property.slice(1)
+            // Set styles
+            elem.style[prefixedProp] = value;
+            elem.style[unprefixedProp] = value;
+        },
+        // Get Closest Item
+        // ----------------
+        // Gets closes item relative to current left
+        getClosestItem: function(target) {
+            var array = this.settings.slideLocations;
+            var tuples = _.map(array, function(val) {
+                return [val, Math.abs(val - target)];
+            });
+            return _.reduce(tuples, function(memo, val) {
+                return (memo[1] < val[1]) ? memo : val;
+            }, [-1, 999])[0];
+        },
+        // Reset Slider To Start
+        // ---------------------
+        // Resets slider to index 0
+        resetSliderToStart: function() {
+            this.settings.currentIndex = 0;
+            this.setSlide();
+        },
+        // Check States
+        // ------------
+        // Check arrow states for slider
+        checkArrowStates: function(ww) {
+            if (ww < 760) {
+                this.$prevArrow.hide();
+                this.$nextArrow.hide();
+            } else {
+                this.$prevArrow.show();
+                this.$nextArrow.show();
+                if (this.settings.currentIndex === 0) {
+                    this.$prevArrow.hide()
+                } else if (this.settings.currentIndex === this.settings.totalItems - this.typeSettings.itemsToSlide) {
+                    this.$nextArrow.hide();
+                }
+            }
+            // endif
+            // Hides arrows if total # of items is lesser than those in view
+            if (this.settings.totalItems <= this.settings.itemsToShow) {
+                this.$prevArrow.hide();
+                this.$nextArrow.hide();
+            }
+        },
+        // Toggle Show Image
+        // -----------------
+        // Show images (tied with UFinity function)
+        toggleShowImage: function(ww) {
+            var $el = this.$el;
+            var index = this.settings.currentIndex;
+            var finalIndex = index + this.typeSettings.itemsToShow;
+            var $onScreenItems = this.$items.slice(index, finalIndex + 1);
+            toggle.functions.showImage($onScreenItems);
+        },
+    };
+    $.fn.sliders = function(sliderConfig) {
+        allSliders = new Sliders(this, sliderConfig)
+    };
+    $.fn.updateSliders = function() {
+        var ww = $(window).width();
+        allSliders.calculateSliderProperties(ww);
+        allSliders.updateSliderSettings(ww);
+    };
+    $.fn.initNewSlider = function() {
+        var S = allSliders;
+        var $el = $(this);
+        var ref = S.totalSliders;
+        var type;
+        var ww = $(window).width();
+        // does nothing if slider already initialized
+        if (this.slider) {
+            return false;
+        }
+        // find out what type of megaslider this is.
+        switch (true) {
+            case $el.hasClass('megaslider__single'):
+                type = 'megaSliderSingle';
+                break;
+            case $el.hasClass('megaslider__portrait'):
+                type = 'megaSliderPortrait';
+                break;
+            case $el.hasClass('megaslider__8'):
+                type = 'megaSliderIn8'
+                break;
+            case $el.hasClass('megaslider__4'):
+                type = 'megaSliderIn4'
+                break;
+            case $el.hasClass('megaslider__8--3up'):
+                type = 'megaSlider3up'
+                break;
+            case $el.hasClass('megaslider__8--4up-portrait'):
+                type = 'megaSlider4upPortrait'
+                break;
+            default:
+                type = 'megaSlider';
+        }
+        // Add reference back to Sliders.
+        S.totalSliders = ref + 1;
+        // If has typesettings, use current props to set slider
+        if (!S.typeSettings[type]) {
+            S.typeSettings[type] = {};
+            S.typeSettings[type].$els = $el;
+            S.typeSettings[type].config = S.sliderConfig[type];
+        }
+        S.typeSettings[type].refArray.push(this.slider);
+        // Build wrap for Slider.
+        this.slider = new Slider(this, ref, type, S.globalSettings);
+        // update slider settings
+        this.slider.updateSettings(S.typeSettings[type], ww);
+    }
+});
+var tgTabCount = 1;
+jQuery(document).ready(function($) {    
+    var TgTabs = window.TgTabs || {};
+    TgTabs = function(element, settings) {
+        var T = this;
+        $el = $(element);
+        T.$el = $el;
+        T.$tabs = $el;
+        T.$wrap = $el.find('.tgtabs__wrap');
+        T.$row = $el.find('.tgtabs__row');
+        T.$tab = $el.find('.tgtab');
+        T.$tabTarget = $el.find('.tgtab__target');
+        T._settings = {
+            activeTab: 0,
+            currentRowPos: 0,
+            oldEvent: null,
+            numTabs: null,
+            tabRowWidth: null,
+            tabWidth: null,
+            tabHeight: null,
+            visibleTabIndex: 0,
+            wrapwidth: null,
+            cssTransitions: null,
+            css3dTransforms: null,
+            cssTransforms: null,
+            prefixes: {},
+            isArrowsShown: false
+        }
+        T.settings = {
+            ajaxUrl: null,
+            // easing: 'fade',
+            // easingDuration: '',
+            arrowsAlwaysShown: false,
+            prevArrowContents: 'Left',
+            nextArrowContents: 'Right',
+            tabsPerPage: null,
+            tabsToSlide: 1,
+            showArrows: 'show', // hide, auto
+            responsive: null,
+            onAjaxDone: null,
+            onBeforeChange: null,
+            onAfterChange: null,
+            onBeforeArrowChange: null,
+            onAfterArrowChange: null,
+        }
+        T.settings = $.extend(true, T.settings, settings)
+        if (T.settings.startingTab) {
+            T._settings.visibleTabIndex = T.settings.startingTab;
+        }
+        T.initialize();
+        return T;
+    }
+    TgTabs.prototype = {
+        constructor: TgTabs,
+        initialize: function() {
+            var T = this;
+            T._settings.wrapWidth = T.$wrap.width();
+            this.createPreloader();
+            this.getPrefixes();
+            this.checkCssTransitions();
+            this.buildArrows();
+            this.setEventHandlers();
+            this.setInitialSettings();
+            this.sortResponsive();
+            this.checkArrowAppearance();
+            this.updateSettings();
+            $(window).resize($.debounce(150, false, function() {
+                T._settings.tabHeight = null;
+                T.$el.find('.tgtab__targets').css('height', 'auto');
+                T.checkArrowAppearance();
+                T._settings.wrapWidth = T.$wrap.width();
+                T.updateSettings();
+                T.checkArrowStates();
+            }));
+            this.initializeStates();
+            this.afterInit();
+        },
+        afterInit: function() {
+            this.$el.addClass('has-loaded');
+        },
+        // ==========
+        // buildArrows
+        // ==========
+        buildArrows: function() {
+            var prevArrow = '<a href="#" class="tgtabs__prev">' + this.settings.prevArrowContents + '</a>';
+            var nextArrow = '<a href="#" class="tgtabs__next">' + this.settings.nextArrowContents + '</a>';
+            // Appends to dom
+            this.$wrap.append('<div class="tgtabs__arrows"></div>');
+            this.$wrap.find('.tgtabs__arrows').append(prevArrow).append(nextArrow);
+            // Sets arrows to Z for easy retrieval
+            this.$arrows = this.$el.find('.tgtabs__arrows');
+            this.$next = this.$el.find('.tgtabs__next');
+            this.$prev = this.$el.find('.tgtabs__prev');
+        },
+        createPreloader: function() {
+            var preloaderId = 'preloader' + tgTabCount
+            var preloader = '<div id="' + preloaderId + '" class="preloader"></div>'
+            this.$el.append(preloader);
+            // if (this.$el.find('#preloader').length) {
+            this.$preloader = this.$el.find('#' + preloaderId);
+            this.preloader = true;
+            // this.preloader = new CanvasLoader(preloaderId);
+            // this.preloader.setColor('#999999'); // default is '#000000'
+            // this.preloader.setShape('spiral'); // default is 'oval'
+            // this.preloader.setDiameter(160); // default is 40
+            // this.preloader.setDensity(50); // default is 40
+            // this.preloader.setRange(1); // default is 1.3
+            // this.preloader.setSpeed(1); // default is 2
+            // this.preloader.setFPS(30); // default is 24
+            tgTabCount += 1;
+            // }
+        },
+        checkCssTransitions: function() {
+            if (Modernizr.csstransitions) {
+                this._settings.cssTransitions = true;
+                this.setCss(this.$row[0], 'transition', '0.5s ease-out');
+            }
+            if (Modernizr.csstransforms3d) {
+                this._settings.css3dTransforms = true;
+            }
+            if (Modernizr.csstransforms) {
+                this._settings.cssTransforms = true;
+            }
+        },
+        // ==========
+        // Get Prefixes
+        // ==========
+        getPrefixes: function() {
+            var styles = window.getComputedStyle(document.documentElement, ''),
+                pre = (Array.prototype.slice
+                    .call(styles)
+                    .join('')
+                    .match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o'])
+                )[1],
+                dom = ('WebKit|Moz|MS|O').match(new RegExp('(' + pre + ')', 'i'))[1];
+            this._settings.prefixes = {
+                dom: dom,
+                lowercase: pre,
+                css: '-' + pre + '-',
+                js: pre[0].toUpperCase() + pre.substr(1)
+            };
+        },
+        // ==========
+        // setCss
+        // ==========
+        setCss: function(elem, property, value) {
+            var prefix = this._settings.prefixes.js,
+                prefixedProp,
+                unprefixedProp;
+            // Ensures first property is uppercase to set vendor prefixes    
+            prefixedProp = prefix + property.charAt(0).toUpperCase() + property.slice(1);
+            // Ensures first letter is lowercase to set prop w/o prefixes
+            unprefixedProp = property.charAt(0).toLowerCase() + property.slice(1)
+            // Set styles
+            elem.style[prefixedProp] = value;
+            elem.style[unprefixedProp] = value;
+        },
+        // ==========
+        // setEventHandlers
+        // ==========
+        setEventHandlers: function() {
+            var T = this;
+            T.hammer = new Hammer(T.$row[0]);
+            T.$next.on('click', function(event) {
+                event.preventDefault();
+                event.message = 'next';
+                if (!_.isNull(T.settings.onBeforeArrowChange)) {
+                    T.settings.onBeforeArrowChange.call(T);
+                }
+                T.slideTabs(event);
+                T.changeShownClasses();
+                if (!_.isNull(T.settings.onAfterArrowChange)) {
+                    T.settings.onAfterArrowChange.call(T);
+                }
+            });
+            T.$prev.on('click', function(event) {
+                event.preventDefault();
+                event.message = 'prev';
+                if (!_.isNull(T.settings.onBeforeArrowChange)) {
+                    T.settings.onBeforeArrowChange.call(T);
+                }
+                T.slideTabs(event);
+                T.changeShownClasses();
+                if (!_.isNull(T.settings.onAfterArrowChange)) {
+                    T.settings.onAfterArrowChange.call(T);
+                }
+            });
+            T.$tabs.on('click', '.tgtab', function(event) {
+                event.preventDefault();
+                var index = $(this).index();
+                var $tabTarget = T.$tabTarget.eq(index)
+                var tabHeight;
+                var ww = $(window).width();
+                // Gets and sets height of tab before switching to prevent flickering.
+                if (!T._settings.tabHeight && ww > 760) {
+                    tabHeight = T.$tabTarget.eq(T._settings.activeTab).height()
+                    T.$tabTarget.parent().css('height', tabHeight);
+                    T._settings.tabHeight = tabHeight
+                }
+                if (!_.isNull(T.settings.onBeforeChange)) {
+                    T.settings.onBeforeChange.call(T, $tabTarget);
+                }
+                T.ajaxLoadTabs($tabTarget, index);
+                T.activateTab(index);
+                T.activateTabTarget($tabTarget);
+                if (!_.isNull(T.settings.onAfterChange)) {
+                    T.settings.onAfterChange.call(T, $tabTarget);
+                }
+                T.setTabHeight();
+            });
+            T.$el.on('click', '.collapsible__toggle', function(event) {
+                T.checkArrowAppearance();
+            });
+            // Adds pan,swipe event handlers
+            T.hammer.on('panstart panmove panend', function(event) {
+                if (T._settings.isArrowsShown) {
+                    switch (event.type) {
+                        case 'panstart':
+                            console.log('panstart');
+                            T._settings.oldEvent = event;
+                            if (T._settings.cssTransitions) {
+                                T.setCss(T.$row[0], 'transition', 'none');
+                            }
+                            if (!_.isNull(T.settings.onBeforeArrowChange)) {
+                                T.settings.onBeforeArrowChange.call(T);
+                            }
+                            break;
+                        case 'panmove':
+                            console.log('panmove');
+                            event.preventDefault;
+                            T.panHandler(event);
+                            break;
+                        case 'panend':
+                            // console.log('panend');
+                            if (T._settings.cssTransitions) {
+                                T.setCss(T.$row[0], 'transition', '0.5s ease-out');
+                            }
+                            T.snapToNextPage(event);
+                            T.changeShownClasses();
+                            T._settings.oldEvent = null;
+                            if (!_.isNull(T.settings.onAfterArrowChange)) {
+                                T.settings.onAfterArrowChange.call(T);
+                            }
+                            break;
+                        default:
+                            return false;
+                    }
+                }
+            });
+        },
+        panHandler: function(event) {
+            this.changeLeft(event.deltaX - this._settings.oldEvent.deltaX);
+            this._settings.oldEvent = event;
+        },
+        changeLeft: function(offsetX) {
+            var T = this;
+            var transformValue;
+            var value = this._settings.currentRowPos * -1 + offsetX;
+            if (T._settings.cssTransitions) {
+                if (T._settings.css3dTransforms) {
+                    transformValue = 'translate3d(' + value + 'px, 0, 0)';
+                } else {
+                    transformValue = 'translate(' + value + 'px, 0)';
+                }
+                this.setCss(this.$row[0], 'transform', transformValue);
+            } else {
+                this.$row.animate({
+                    marginleft: -rowPos
+                }, 500);
+            }
+            this._settings.currentRowPos = -value;
+            // forceRedraw(this.$row);
+        },
+        // ==========
+        // setInitialSettings
+        // ==========
+        setInitialSettings: function() {
+            this._settings.numTabs = this.$tab.length;
+        },
+        initializeStates: function() {
+            this.$tab.eq(0).addClass('is-active');
+            this.$tabTarget.eq(0).addClass('is-active');
+        },
+        // ==========
+        // SortResponsive
+        // ==========
+        sortResponsive: function() {
+            if (!_.isNull(this.settings.responsive)) {
+                var sortedResponsive = _.sortBy(this.settings.responsive, function(obj) {
+                    return obj.breakpoint;
+                })
+            }
+            this.settings.responsive = sortedResponsive;
+        },
+        // ==========
+        // checkResponsive
+        // ==========
+        checkResponsive: function() {
+            var T = this;
+            var minBreakpointObj;
+            if (!_.isNull(this.settings.responsive)) {
+                _.forEach(this.settings.responsive, function(obj, index) {
+                    if ($(window).width() >= obj.breakpoint) {
+                        _.forEach(obj, function(val, key) {
+                            T.settings[key] = val;
+                        });
+                    }
+                });
+            }
+        },
+        // ==========
+        // updateSettings
+        // ==========
+        updateSettings: function() {
+            this.checkResponsive();
+            this.setTabWidth();
+            this.setTabRowWidth();
+            this.resetTabHeight();
+            this.snapToTab();
+        },
+        // ==========
+        // setTabRowWidth
+        // ==========
+        setTabRowWidth: function() {
+            var rowWidth;
+            if (this._settings.tabWidth !== 'auto') {
+                rowWidth = this._settings.tabWidth * this._settings.numTabs;
+                this.$row.css({
+                    width: '9999px'
+                })
+            } else {
+                rowWidth = _.reduce(this.$tab.slice(0, this._settings.numTabs - 1), function(acc, el) {
+                    if (isNaN(acc)) {
+                        acc = $(acc).outerWidth();
+                    }
+                    return acc + $(el).outerWidth();
+                });
+                this.$row.css({
+                    width: '9999px'
+                });
+            }
+            this._settings.rowWidth = rowWidth;
+        },
+        // ==========
+        // setTabWidth
+        // ==========
+        setTabWidth: function() {
+            var tabWidth;
+            // Sets tabWidth either to auto or a px value
+            if (_.isNull(this.settings.tabsPerPage)) {
+                tabWidth = 'auto';
+            } else {
+                tabWidth = Math.ceil(parseInt(this._settings.wrapWidth) / this.settings.tabsPerPage);
+            }
+            this.$el.find('.tgtab').css({
+                width: tabWidth,
+            });
+            this._settings.tabWidth = tabWidth;
+        },
+        resetTabHeight: function() {
+            // this.$tabTarget.parent().css('height', 'auto');
+        },
+        setTabHeight: function() {
+            // var T = this;
+            // var targetIndex = this._settings.activeTab;
+            // imagesLoaded(T.$tabTarget.eq(targetIndex), function() {
+            // var tabHeight = T.$tabTarget.eq(targetIndex).children().height();
+            // console.log(tabHeight);
+            // T.$tabTarget.parent().css('height', 'auto');
+            // })
+        },
+        // ==========
+        // activateTab
+        // ==========
+        activateTab: function(index) {
+            var $clickedTab = this.$tab.eq(index);
+            this.$tab.removeClass('is-active');
+            $clickedTab.addClass('is-active');
+            this._settings.activeTab = index;
+        },
+        // ==========
+        // activateTabTarget
+        // ==========
+        activateTabTarget: function($tabTarget) {
+            this.$tabTarget.removeClass('is-active');
+            $tabTarget.addClass('is-active');
+        },
+        /**
+         * ajaxLoadTabs
+         */
+        ajaxLoadTabs: function($tabTarget, index) {
+            var T = this;
+            var ajaxUrl = $tabTarget.attr('data-ajax-url');
+            var ajaxLoaded = $tabTarget.attr('ajax-loaded') || null;
+            // Proceeds only if there is no Ajax url, and if ajax is not already loaded.
+            if (!ajaxUrl || ajaxLoaded) {
+                return false;
+            }
+            if (this.preloader) {
+                // this.preloader.show();
+                this.$preloader.addClass('is-loading')
+            }
+            // Ajax GET request
+            this.xhr = $.ajax({
+                    url: ajaxUrl,
+                    dataType: 'html',
+                    beforeSend: function(xhr) {
+                        $tabTarget.attr('ajax-loaded', 'fetching');
+                    }
+                })
+                .done(function(data) {
+                    // Appends megamenu and calls the respective megamenu item to activate
+                    $tabTarget.append(data);
+                    if (!_.isNull(T.settings.onAjaxDone)) {
+                        T.settings.onAjaxDone.call(T, $tabTarget);
+                    }
+                    // Set Ajax loaded
+                    $tabTarget.attr('ajax-loaded', true);
+                    if (T.preloader) {
+                        // T.preloader.hide();
+                        T.$preloader.removeClass('is-loading')
+                    }
+                    var $megaSlider = $tabTarget.find('.megaslider, .megaslider__single, .megaslider__portrait, .megaslider__8, .megaslider__4, .megaslider__8--3up, .megaslider__8--4up-portrait');
+                    var megaSliderId = $megaSlider.attr("id");
+                    var clickLinkOptionsMap = {
+                        componentNameClass: ".collapsible__title",
+                        rootContainerClass: ".megaslider-holder",
+                        itemIndexClass: ".tg-teaser-item,.tg-teaser-item--portrait",
+                        tabNameClass: ".tgtabs__wrap .tgtab.is-active"
+                    };
+                    toggle.functions.bindClickLinkOptionsMapWithHref("#" + megaSliderId + " .tg-teaser-item a,#" + megaSliderId + " .tg-teaser-item--portrait a", clickLinkOptionsMap);
+                })
+                .fail(function(err) {
+                    console.log("Error", err.statusText);
+                });
+        },
+        // ==========
+        // slideTabs
+        // -----
+        // Slides tabs into position
+        // ==========
+        slideTabs: function(event) {
+            var slideTarget;
+            switch (event.message) {
+                case "prev":
+                    slideTarget = this._settings.visibleTabIndex - this.settings.tabsToSlide;
+                    if (slideTarget - this.settings.tabsToSlide < 0) {
+                        slideTarget = 0;
+                    }
+                    break;
+                case "next":
+                    slideTarget = this.settings.tabsToSlide + this._settings.visibleTabIndex;
+                    if (slideTarget + this.settings.tabsToSlide > this._settings.numTabs) {
+                        slideTarget = this._settings.numTabs - this.settings.tabsToSlide;
+                    }
+                    break;
+                default:
+                    return false;
+            }
+            this._settings.visibleTabIndex = slideTarget;
+            this.checkArrowStates();
+            this.snapToTab();
+        },
+        // ==========
+        // snapToTab
+        // ==========
+        snapToTab: function() {
+            var rowPos = 0;
+            var prefix;
+            var transformValue;
+            if (this._settings.tabWidth !== 'auto') {
+                rowPos = this._settings.visibleTabIndex * this._settings.tabWidth;
+            } else {
+                if (!_.isUndefined(this.$tab.slice(0, this._settings.visibleTabIndex)[0])) {
+                    rowPos = _.reduce(this.$tab.slice(0, this._settings.visibleTabIndex), function(acc, el) {
+                        if (isNaN(acc)) {
+                            acc = $(acc).outerWidth();
+                        }
+                        return acc + $(el).outerWidth();
+                    });
+                }
+            }
+            // if no arrows, visible tab should be #0
+            if (!this._settings.isArrowsShown) {
+                rowPos = 0;
+                visibleTabIndex = 0;
+            }
+            if (this._settings.cssTransitions) {
+                if (this._settings.css3dTransforms) {
+                    transformValue = 'translate3d(' + -rowPos + 'px, 0, 0)';
+                } else {
+                    transformValue = 'translate(' + -rowPos + 'px, 0)';
+                }
+                this.setCss(this.$row[0], 'transform', transformValue);
+            } else {
+                this.$row.animate({
+                    marginleft: -rowPos
+                }, 500);
+            }
+            this._settings.currentRowPos = rowPos;
+        },
+        // ==========
+        // snapToNextPage
+        // ==========
+        snapToNextPage: function(event) {
+            var direction = event.direction;
+            switch (direction) {
+                case 2:
+                    this._settings.visibleTabIndex = this._settings.visibleTabIndex + this.settings.tabsToSlide;
+                    if (this._settings.visibleTabIndex + this.settings.tabsToSlide - 1 > this._settings.numTabs) {
+                        this._settings.visibleTabIndex = this._settings.numTabs - this.settings.tabsToSlide;
+                    }
+                    break;
+                case 4:
+                    this._settings.visibleTabIndex = this._settings.visibleTabIndex - this.settings.tabsToSlide;
+                    if (this._settings.visibleTabIndex < 0) {
+                        this._settings.visibleTabIndex = 0
+                    }
+                    break;
+                default:
+                    return false
+            }
+            this.checkArrowStates();
+            this.snapToTab();
+        },
+        // ==========
+        // checkArrowAppearance
+        // ==========
+        checkArrowAppearance: function() {
+            var wrapWidth = this.$wrap.width();
+            var collapsible = this.$el.hasClass('collapsible') ? true : false;
+            var totalWidth
+            // Checks if settings has always shown set to true
+            if (!this.settings.arrowsAlwaysShown) {
+                if (this._settings.tabWidth !== 'auto' && this._settings.tabWidth !== null) {
+                    totalWidth = this._settings.visibleTabIndex * this._settings.tabWidth;
+                } else {
+                    if (!_.isUndefined(this.$tab.slice(0, this._settings.numTabs)[0])) {
+                        totalWidth = _.reduce(this.$tab.slice(0, this._settings.numTabs), function(acc, el) {
+                            if (isNaN(acc)) {
+                                acc = $(acc).outerWidth();
+                            }
+                            return acc + $(el).outerWidth();
+                        });
+                    }
+                }
+                if (wrapWidth < totalWidth) {
+                    this._settings.isArrowsShown = true;
+                    this.$el.find('.tgtabs__arrows').show();
+                    this.$wrap.css({
+                        paddingLeft: 41 + 'px',
+                        paddingRight: 41 + 'px'
+                    });
+                    // Checks if tab arrows are under collapsible element. If yes, react accordingly.
+                    if (collapsible) {
+                        if (this.$el.hasClass('is-collapsed')) {
+                            this.$arrows.hide();
+                        } else {
+                            this.$arrows.show();
+                        }
+                    }
+                } else {
+                    this._settings.isArrowsShown = false;
+                    this.$el.find('.tgtabs__arrows').hide();
+                    this.$wrap.css('padding', 0);
+                }
+            } else {
+                this._settings.isArrowsShown = true;
+            }
+        },
+        // Check arrow states
+        // ------------------
+        checkArrowStates: function() {
+            if (this._settings.isArrowsShown === true) {
+                if (this._settings.visibleTabIndex === 0) {
+                    this.$prev.hide();
+                } else {
+                    this.$prev.show();
+                }
+                if (this._settings.visibleTabIndex >= this._settings.numTabs - this.settings.tabsToSlide) {
+                    this.$next.hide();
+                } else {
+                    this.$next.show();
+                }
+            }
+        },
+        // shownClasses
+        // ------------
+        // Change classes for visible items for EPG
+        changeShownClasses: function() {
+            var firstItem = this._settings.visibleTabIndex,
+                lastItem,
+                $shownItems;
+            if (!_.isNull(this.settings.tabsPerPage)) {
+                lastItem = firstItem + this.settings.tabsPerPage,
+                    $shownItems = this.$tab.slice(firstItem, lastItem);
+                this.$tab.removeClass('is-shown');
+                $shownItems.addClass('is-shown');
+            }
+        }
+    }
+    $.fn.tgtabs = function(settings) {
+        var T = this;
+        return T.each(function(index, el) {
+            el.tgtabs = new TgTabs(el, settings);
+        });
+    }
+});
+jQuery(document).ready(function($) {
+    window.phoenixVars = {
+        epgQuickLinksTop: 0,
+        epgNavTop: 0,
+        navHoverDelay: 500,
+        localNavTop: 0,
+        localNavMoreLimit: 5,
+        navItems: [],
+        breakpoints: {
+            small: 480,
+            small2: 560,
+            medium: 760,
+            mLarge: 980,
+            large: 1140,
+            xlarge: 1440
+        },
+        megaSliderConfigurations: {
+            megaSlider: {
+                targetClass: ".megaslider",
+                ignoredClasses: ".megaslider__single, .megaslider__portrait, .megaslider__8, .megaslider__8--3up, .megaslider__4",
+                config: {
+                    numItemsToShow: {
+                        760: 2,
+                        1140: 3
+                    }
+                }
+            },
+            megaSliderSingle: {
+                targetClass: ".megaslider__single",
+                config: {
+                    numItemsToShow: {
+                        760: 4,
+                        1140: 6
+                    }
+                }
+            },
+            megaSliderPortrait: {
+                targetClass: ".megaslider__portrait",
+                config: {
+                    numItemsToShow: {
+                        760: 6,
+                        1140: 8
+                    }
+                }
+            },
+            megaSliderIn8: {
+                targetClass: ".megaslider__8",
+                config: {
+                    numItemsToShow: {
+                        760: 2
+                    }
+                }
+            },
+            megaSliderIn4: {
+                targetClass: ".megaslider__4",
+                config: {
+                    numItemsToShow: {
+                        0: 1
+                    }
+                }
+            },
+            megaSlider3up: {
+                targetClass: ".megaslider__8--3up",
+                config: {
+                    numItemsToShow: {
+                        760: 3
+                    }
+                }
+            },
+            megaSlider4upPortrait: {
+                targetClass: ".megaslider__8--4up-portrait",
+                config: {
+                    numItemsToShow: {
+                        760: 4
+                    }
+                }
+            }
+        }
+    };
+    
+    $('.megaslider').sliders(phoenixVars.megaSliderConfigurations)
+});
+jQuery(document).ready(function($) {
+    $('.tgtabs').not('.tgtabs--epg').tgtabs({
+        tabsToSlide: 2,
+        prevArrowContents: '<i class="ti-arrow-back"></i>',
+        nextArrowContents: '<i class="ti-arrow-next"></i>',
+        onAjaxDone: updateSliders
+    });
+    function updateSliders($tabTarget) {
+        var $megaSlider = $tabTarget.find('.megaslider, .megaslider__single, .megaslider__portrait, .megaslider__8, .megaslider__4, .megaslider__8--3up, .megaslider__8--4up-portrait');
+        if ($megaSlider.length) {
+            $megaSlider.initNewSlider();
+            $megaSlider.find('[data-dotdot]').truncateToHeight();
+        }
+        var $megaSlider = $tabTarget.find('.megaslider, .megaslider__single, .megaslider__portrait, .megaslider__8, .megaslider__4, .megaslider__8--3up,   .megaslider__8--4up-portrait');
+        //console.log($tabTarget);
+        var megaSliderId = $megaSlider.attr("id");
+        //console.log("megaSliderId=" + megaSliderId);
+    }
+    
+    $("div.tg-megaslider").on("click", "a.tg-load-more", function(e) {
+        e.preventDefault();
+        var t = $(this).closest("div.tg-megaslider").find("img.delayed");
+        $.each(t, function() {
+        var e = $(this).data("src");
+        $(this).attr("src", e), $(this).removeClass("delayed")
+        })
+    });
+    
+    if ($('.celebbio-photos.megaslider-holder .megaslider__single .megaslider__item.megaslider__item--1').length <= 6){
+        $('.celebbio-photos.megaslider-holder .megaslider__single .slider-next').css('display','none');
+    }
+    /*
+    //replace http into https ZH
+     if (($('.celebbio-photos.megaslider-holder .megaslider__single .megaslider__item.megaslider__item--1').length > 0) &&  ((location.href.indexOf('/zh/') != -1) || (location.href.indexOf('cmstudio') != -1) )){
+         $('.celebbio-photos.megaslider-holder .megaslider__single .megaslider__item.megaslider__item--1').find('.img-holder').each(function(){
+            var imgSourceOld = $(this).find('source').attr('srcset'),
+            imgSourceNew = imgSourceOld.replace(/http:\/\//i, 'https://');
+            $(this).find('source').attr('srcset',imgSourceNew);
+            
+            var imgSrc = $(this).find('img'),
+            dataSrcSetOld = imgSrc.attr('srcset'),            
+            dataSrcSetNew = dataSrcSetOld.replace(/http:\/\//i, 'https://');
+            imgSrc.attr('srcset',dataSrcSetNew);
+            
+            var dataSrcOld =  imgSrc.attr('src'),
+            dataSrcNew = dataSrcOld.replace(/http:\/\//i, 'https://');
+            imgSrc.attr('src',dataSrcNew);    
+            
+            var dataErrorOld = imgSrc.attr('onerror');            
+            dataErrorNew = dataErrorOld.replace(/http:\/\//i, 'https://');
+            imgSrc.attr('onerror',dataErrorNew);
+         });
+     }
+     */
+    
+});
