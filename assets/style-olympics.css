@@ -232,7 +232,7 @@
 
 .olympics .section.news .wrapper .sidebar {
 	width: calc(34.188% - 30px);
-	float: left;
+	float: right;
 }
 
 .olympics .sidebar .ads-box {
@@ -336,18 +336,54 @@
 	display: inline-block;
 }
 
-.olympics .swim-play .box-swim-play .box:first-child {
+.olympics .swim-play .box-swim-play .box.first {
 	padding-right: 22px;
 }
 
-.olympics .swim-play .box-swim-play .box:nth-child(2) {
+.olympics .swim-play .box-swim-play .box.second{
 	width: 35.52340%
 }
 
-.olympics .swim-play .box-swim-play .box:last-child {
+.olympics .swim-play .box-swim-play .box.third {
 	margin-right: 0px;
 }
 
+.olympics .swim-play .box-swim-play .box.box-mobile {
+	display: none;
+	width: 100%;
+	text-align: center;
+	margin-right: 0px;
+	margin-bottom: 30px;
+}
+
+.olympics .swim-play .box-swim-play .box.box-mobile.bottom {
+	margin-top: 15px;
+	color: #d2d2d2;
+}
+
+.olympics .swim-play .box-swim-play .box.box-mobile.bottom .medals-box {
+	width: calc(50% - 6px);
+	float: left;
+	display: inline-block;
+	margin-right: 12px;
+}
+
+.olympics .swim-play .box-swim-play .box.box-mobile.bottom .medals-box ul li img {
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+
+.olympics .swim-play .box-swim-play .box.box-mobile.bottom .medals-box:last-child {
+	margin-right: 0px;
+}
+
+.olympics .swim-play .box-swim-play .box.box-mobile h4 {
+	margin-bottom: 15px;
+}
+
+.olympics .swim-play .box-swim-play .box.box-mobile p {
+	max-width: 100%;
+}
 .olympics .swim-play .box-swim-play .medals-box p {
 	font-size: 15px;
 	font-weight: 300;
@@ -535,7 +571,7 @@
 #carousel.outerWrapper {
 	text-align: left;
 	position:relative;
-	margin:0px auto 40;
+	margin:0px auto 40px;
 	width:100%;
 }
 
@@ -573,4 +609,356 @@
 
 #carousel .left-nav-btn:hover, #carousel .right-nav-btn:hover {
 	opacity: 1;
+}
+
+@media (max-width: 1280px) {
+	#carousel.outerWrapper {
+		width: calc(100% - 72px);
+	}
+
+	.olympics .sidebar .ads-box {
+		width: 100%;
+		max-width: 320px;
+	}
+
+	.olympics .section.news {
+		background-image: url('img/background-marron-mobile.png');
+		background-position: bottom left;
+	}
+
+}
+
+@media (max-width: 1024px) {
+	.olympics .swim-play .box-swim-play .box {
+		margin-right: 1.5726%;
+	}
+
+	.olympics .swim-play .box-swim-play .box.second {
+		width: 43.5234%;
+	}
+}
+
+@media (max-width: 900px) {
+	.olympics .banner-top {
+		height: 366px;
+	}
+
+	.olympics .banner-top .bg-left {
+		background-color: transparent;
+	}
+
+	.olympics .banner-top .wrapper-banner {
+		display: inline-block;
+		max-width: 100%;
+		width: 100%;
+	}
+
+	.olympics .banner-top .wrapper-banner .box {
+		height: 183px;
+	}
+
+	.olympics .banner-top .wrapper-banner .box.bbox-1 {
+		width: 45%;	
+		max-width: 100%;	
+		background-color: #123566;
+	}
+
+	.olympics .banner-top .wrapper-banner .box.bbox-2 {
+		width: 55%;		
+		max-width: 100%;
+	}
+
+	.olympics .banner-top .wrapper-banner .box.bbox-3 {
+		width: 100%;		
+		background-color: #FFF;
+		max-width: 100%;
+	}
+
+	.olympics .banner-top .wrapper-banner .box.bbox-3 a.btn {
+		display: block;
+		max-width: 105px;
+		margin: 0px auto;
+	}
+
+	.olympics #hero-slider {
+	    height: auto;
+	    padding-bottom: 56%;
+	}
+
+	.olympics .swim-play {
+		text-align: center;
+	}
+
+	.olympics .swim-play .box-swim-play {
+		max-width: 700px;
+	}
+
+	.olympics .swim-play .box-swim-play .box.first {
+		display: none;
+	}
+
+	.olympics .swim-play .box-swim-play .box.second {
+		width: 410px;
+		margin-right: 15px;
+	}
+
+	.olympics .swim-play .box-swim-play .box.third {
+		width: calc(100% - 425px);
+		text-align: left;
+	}
+	.olympics .swim-play .box-swim-play .box.box-mobile {
+		display: block;
+		width: 100%;
+	}
+
+	.olympics .section.faq .wrapper {
+		background-image: none;
+	}
+
+
+}
+
+@media (max-width: 767px) {
+	.olympics .banner-top .wrapper-banner .box.bbox-1 {
+		width: 44%;	
+	}
+
+	.olympics .banner-top .wrapper-banner .box.bbox-2 {
+		width: 56%;		
+	}
+
+	.olympics .banner-top .wrapper-banner .box.bbox-3 {
+		
+	}
+
+	.olympics .ads-box.top {
+		width: 100%;
+	}
+	
+	.olympics .section.news .wrapper .sidebar {
+		width: 100%;
+		float: none;
+		margin-bottom: 20px;
+	}
+
+	.olympics .fb-widget {
+		margin: 0px auto 20px;
+	}
+
+	.olympics .ads-box {
+		margin: 0px auto 0px;
+	}
+
+	.olympics .section.news .wrapper .content {
+	    width: 100%;
+	    float: none;
+	    margin-right: 0px;
+	}
+
+	.olympics .section.news .wrapper .content .list-headline-news.right-images img,
+	.olympics .section.news .wrapper .content .list-headline-news.left-images img {
+		float: none;
+		width: 100%;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+
+	.olympics .section.faq .logo-olympic {
+		display: none;
+	}
+
+	.olympics .section.faq .panel-group {
+		padding: 25px 20px;
+	}
+
+	.olympics .section.faq .panel-heading {
+	    padding: 14px 0px 14px 25px;
+	}
+
+	.olympics .section.faq .panel-heading a {
+		padding-right: 0px;
+	}
+
+	.olympics .section.faq .panel-content {
+		padding: 0 0 0 25px;
+	}
+	.olympics .section.faq .panel-heading span {
+		margin-left: -26px;
+		margin-right: 0px;
+	}
+
+	.olympics .swim-play .box-swim-play {
+		padding: 20px;
+	}
+
+	.olympics .swim-play .box-swim-play .box.second {
+		float: none;
+		margin-right: 0px;
+	}
+
+	.olympics .swim-play .box-swim-play .box.third {
+		display: none;
+	}
+}
+
+@media (max-width: 640px) {
+	.olympics .swim-play .box-swim-play .medals-box ul li {
+		width: 30%;
+		margin-right: 4%;
+	}
+
+	.olympics .swim-play .box-swim-play .medals-box ul li img {
+		width: 100%;
+	}
+
+	.olympics h4.cust-2 {
+		font-size: 20px;
+	}
+
+	.olympics h4.title.custom-1 {
+		font-size: 20px;
+		margin-bottom: 0px;
+	}
+
+	.olympics .section.news .wrapper {
+		padding: 20px 20px 170px
+	}
+	.olympics .last-news h4.title {
+		font-size: 17px;
+		margin-bottom: 0px;
+	}
+	.olympics .last-news a.see-all {
+		font-size: 10px;
+		float: none;
+		display: block;
+		text-align: center;
+		margin-top: 0px;
+		margin-bottom: 30px;
+	}
+
+	.olympics .last-news .item label,
+	.olympics .last-news .item p,
+	.olympics .last-news .item a {
+		font-size: 10px;
+	}
+
+	#carousel .item {
+		height: 200px;
+	}
+
+	.olympics .section.news .wrapper .content .list-headline-news .news-content h4.news-title {
+		font-size: 17px;
+		line-height: 20px;
+		margin-bottom: 10px;
+	}
+
+	.olympics .section.news .wrapper .content .list-headline-news .news-content p {
+		font-size: 12px;
+		margin: 10px 0px 15px!important;
+	}
+
+	.olympics .ads-box.top {
+		margin: 10px auto 20px;
+	}
+
+	.olympics .swim-play .box-swim-play .medals-box p {
+		font-size: 12px;
+	}
+
+	.olympics .swim-play .box-swim-play .box.box-mobile.bottom .medals-box {
+		font-size: 9.3px;
+	}
+
+	.olympics .section.faq .panel-group {
+		padding: 10px 20px 20px;
+	}
+
+	.olympics .section.faq .panel-heading {
+		padding: 8px 0px 8px 25px;
+	}
+
+	.olympics .section.faq .panel-heading a,
+	.olympics .section.faq .panel-content p {
+		font-size: 12px;
+	}
+
+	.olympics .section.faq .panel-content p {
+		line-height: 16px;
+		margin: 10px 0px;
+	}
+}
+
+@media (max-width: 500px) {
+
+	.olympics .banner-top {
+		height: 278px;
+	}
+
+	.olympics .banner-top .wrapper-banner .box {
+		height: 139px;
+		padding-top: 25px;
+	}
+
+	.olympics .banner-top .wrapper-banner .box.bbox-1 {
+		width: 44%;	
+		padding-top: 39px;
+	}
+
+	.olympics .banner-top .wrapper-banner .box.bbox-1 img {
+		width: calc(100% - 40px);
+	}
+
+	.olympics .banner-top .wrapper-banner .box.bbox-2 span.countdown {
+		font-size: 61px;
+		line-height: 56px;
+		margin-left: -9px;
+		margin-top: -10px!important; 
+	}
+	
+	.olympics .banner-top .wrapper-banner .box.bbox-2 p {
+		font-size: 12px;
+	    display: block;
+	    margin: 0px auto;
+	    line-height: 16px;
+	    text-align: center;
+	    padding-top: 6px;
+	}
+
+	.olympics .banner-top .wrapper-banner .box.bbox-2 p span {
+		font-size: 12px;
+		display: block;
+		margin-top: 2px;
+	}
+
+	.olympics .banner-top .wrapper-banner .box.bbox-3 {
+		padding-top: 24px;
+	}
+
+	.olympics .banner-top .wrapper-banner .box img.meconnect-logo {
+		margin-bottom: 10px;
+	}
+
+	.olympics .banner-top .wrapper-banner .box.bbox-3 span {
+		margin-top: 8px;
+	}
+
+	#carousel .item {
+		width: 218px;
+	}
+
+	.olympics .last-news .item img {
+		width: 100%;
+	}
+
+	.olympics .section.news .wrapper .content .list-headline-news .news-content {
+		padding: 13px;
+	}
+
+	.olympics .swim-play .box-swim-play .box.second {
+		width: 100%;
+	}
+
+	.olympics .swim-play .box-swim-play .box.second img {
+		width: 100%;
+	}
 }
