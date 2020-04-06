@@ -1,4 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Oxygen:wght@300;400;700&display=swap');
+
+@font-face {
+  font-family: 'icomoonnew';
+  src:  url('./fonts/icoomon-new-eot.eot?e91cif');
+  src:  url('./fonts/icoomon-new-eot.eot?e91cif#iefix') format('embedded-opentype'),
+    url('./fonts/icoomon-new-ttf.ttf?e91cif') format('truetype'),
+    url('./fonts/icoomon-new-woff.woff?e91cif') format('woff'),
+    url('./fonts/icoomon-new-svg.svg​​​​​​​?e91cif#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 .olympics {
 	font-family: 'Oswald', sans-serif;
 	/*font-family: 'Oxygen', sans-serif;*/
@@ -488,15 +499,13 @@
     float: left;
     margin-right: -25px;
     margin-left: -24px;
-    padding-top: 6px;
-}
-.olympics .section.faq .active .panel-heading span {
-      -ms-transform: rotate(0deg);
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg);
+    padding-top: 5px;
 }
 .olympics .section.faq .panel-heading span:before {
-    content: "\e614";
+    content: "\e905";
+}
+.olympics .section.faq .panel-heading .open span:before {
+	content: "\e904";
 }
 .olympics .section.faq .panel-content{
     padding-top: 0px;
@@ -504,7 +513,7 @@
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     border-bottom: 1px solid #a4a4a4;
-    padding: 0 25px 0px;
+    padding: 0 25px 0px 50px;
 }
 .olympics .section.faq .panel-content p {
     font-size: 15px;
