@@ -36,6 +36,26 @@
     <script type="text/javascript" src="./Mediacorp_files/corporate-new.minify.js.download"></script>
     <script type="text/javascript" src="./Mediacorp_files/restructuring.minify.js.download"></script>
     <script type="text/javascript" src="./assets/owl.carousel.js"></script>
+	<script>
+	function countdownTimer(elementId, repeatCheckTime) {
+		//function countdownTimer(elementId) {
+			var toTime = new Date('Jul 23, 2021 00:00:00');
+			toTime = toTime.getTime(); var elem = document.getElementById(elementId); function update() {
+				var curTime = new Date().getTime();
+				var d = toTime - curTime;
+				d = Math.floor(d / (1000 * 60 * 60 * 24));
+				elem.innerHTML = "" + d;
+			} update();
+			if (repeatCheckTime && repeatCheckTime > 0) {
+				setInterval(update, repeatCheckTime*1000);
+			}
+		}
+		
+	$(function (){
+		
+		countdownTimer('countdownNumber',2);
+	});	
+	</script>
 </head>
 <body class="homepg body-olympics theme4">
     <div id="sidebar" display="none" style="width: 470px; left: -150px; display: none;">
@@ -152,8 +172,8 @@
             				<img src="assets/img/olympic-logo.png">
             			</div>
             			<div class="box bbox-2">
-            				<span class="countdown">100</span>
-            				<p>days to go!<br>tokyo 2020 olympic games <span>24 Jul – 9 Aug</p>
+            				<span class="countdown" id="countdownNumber"></span>
+            				<p>days to go!<br>tokyo 2020 olympic games <span>23 Jul - 08 Aug</p>
             			</div>
             			<div class="box bbox-3">
             				<img src="assets/img/meconnectlogo.png" class="meconnect-logo">
