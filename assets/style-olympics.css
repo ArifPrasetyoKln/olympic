@@ -132,6 +132,13 @@
     margin-top: -5px!important;
 }
 
+.olympics .banner-top .wrapper-banner .box.bbox-2 h1 {
+	font-weight: 300;
+	font-size: 42px;
+	margin-bottom: 0;
+	margin-top: -9px!important;
+}
+
 .olympics .banner-top .wrapper-banner .box.bbox-2 p {
     margin-top: -5px!important;
 	max-width: 180px;
@@ -146,6 +153,19 @@
 .olympics .banner-top .wrapper-banner .box.bbox-2 p span {
 	font-size: 18.8px;
 	color: #70b0f3;
+	display: block;
+}
+
+.olympics .banner-top .wrapper-banner .box.bbox-2.custom p {
+	max-width: 100%;
+	margin-left: 0;
+	font-size: 30px;
+	text-align: center;
+}
+
+.olympics .banner-top .wrapper-banner .box.bbox-2.custom p span {
+	font-size: 28px;
+	margin-top: 5px!important;
 }
 
 .olympics .banner-top .wrapper-banner .box.bbox-3 {
@@ -164,6 +184,59 @@
 
 .olympics #hero-slider {
 	height: 460px;
+}
+
+.olympics .slider.custom .bx-wrapper {
+	height: 326px;
+	position: relative;
+}
+
+.olympics .slider.custom .item .image-item {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 326px;
+}
+
+.olympics .slider.custom .bx-wrapper .bx-controls .bx-pager {
+	bottom: 15px;
+}
+
+.olympics .slider.custom .bx-wrapper .bx-controls .bx-pager.bx-default-pager a {
+	background: rgba(0,0,0,.3);
+}
+
+.olympics .slider.custom .bx-wrapper .bx-controls .bx-pager.bx-default-pager a:hover, 
+.olympics .slider.custom .bx-wrapper .bx-controls .bx-pager.bx-default-pager a.active, 
+.olympics .slider.custom .bx-wrapper .bx-controls .bx-pager.bx-default-pager a:focus {
+	background: #000;
+}
+
+.olympics .slider.custom .bx-wrapper .bx-controls {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+}
+
+.olympics .slider.custom .bx-wrapper .bx-controls-direction {
+	top: 44%;
+	position: relative;
+	height: 32px;
+}
+
+.olympics .slider.custom .bx-wrapper .bx-controls-direction a.bx-next,
+.olympics .slider.custom .bx-wrapper .bx-controls-direction a.bx-prev {
+	bottom: 0;
+	margin-top: 0px;
+}
+
+.olympics .slider.custom .bx-wrapper .bx-prev {
+	background: url(https://www.mediacorp.sg/blob/10882196/639a9e0d43448a1932742996c1f67925/ico-arrow-svg-data.svg) no-repeat center;
+}
+
+.olympics .slider.custom .bx-wrapper .bx-next {
+	background: url(https://www.mediacorp.sg/blob/10882196/639a9e0d43448a1932742996c1f67925/ico-arrow-svg-data.svg) no-repeat center;
 }
 
 .olympics .box-news {
@@ -195,6 +268,28 @@
 	margin-right: 30px;
 }
 
+.olympics .section.news .schedule{
+	display: inline-block;
+	width: 100%;
+	margin-top: 30px;
+}
+
+.olympics .section.news .box-medals{
+	width: calc(34.445% - 30px);
+    display: inline-block;
+    float: left;
+    margin-right: 30px;
+    height: 396px;
+    background-color: #ccc;
+}
+
+.olympics .section.news .box-schedule{
+	width: 65.555%;
+    display: inline-block;
+    float: left;
+    height: 396px;
+    background-color: #ccc;
+}
 .olympics .section.news .wrapper .content .list-headline-news {
 	display: inline-block;
 	width: 100%;
@@ -238,14 +333,31 @@
 	float: right;
 }
 
-.olympics .sidebar .ads-box {
+.olympics .sidebar .melisten-box {
+	text-align: center;
+    max-width: 300px;
+    margin: 0 auto 23px;
+    padding-top: 10px;
+}
+
+.olympics .sidebar .melisten-box .logo-melisten{
+	width: 146px;
+	height: 27px;
+	background-image: url(img/melisten-logo.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin: 0px auto;
+}
+
+.olympics .sidebar .adv-box {
 	height: 100px;
 	width: 320px;
 	background-color: #ccc;
 	text-align: center;
+	margin: 0px auto;
 }
 
-.olympics .ads-box.top {
+.olympics .adv-box.top {
 	clear: both;
 	margin: 30px auto 40px;
 	display: block;
@@ -255,7 +367,7 @@
 	text-align: center;
 }
 
-.olympics .ads-box.right {
+.olympics .adv-box.right {
 	height: 250px;
 	width: 100%;
 	background-color: #ccc;
@@ -266,9 +378,9 @@
 .olympics .fb-widget {
 	height: 250px;
 	width: 100%;
-	max-width: 320px;
+	max-width: 300px;
 	background-color: #ccc;
-	margin-bottom: 20px;
+	margin: 0 auto 20px;
 	text-align: center;
 }
 
@@ -348,7 +460,8 @@
 }
 
 .olympics .swim-play .box-swim-play .box.second{
-	width: 35.52340%
+	width: 35.52340%;
+	padding-bottom: 70%;
 }
 
 .olympics .swim-play .box-swim-play .box.third {
@@ -629,7 +742,7 @@
 		margin: 0px auto;
 	}
 
-	.olympics .sidebar .ads-box {
+	.olympics .sidebar .adv-box {
 		width: 100%;
 		max-width: 320px;
 	}
@@ -744,7 +857,7 @@
 		
 	}
 
-	.olympics .ads-box.top {
+	.olympics .adv-box.top {
 		width: 100%;
 	}
 	
@@ -759,7 +872,7 @@
 		width: calc(100% - 40px);
 	}
 
-	.olympics .ads-box {
+	.olympics .adv-box {
 		margin: 0px auto 0px;
 	}
 
@@ -784,6 +897,22 @@
 	    float: none;
 	    margin-right: 0px;
 	    padding: 0px 20px;
+	}
+
+	.olympics .section.news .schedule {
+		padding: 0 20px;
+	}
+
+	.olympics .section.news .box-medals {
+		margin-bottom: 16px;
+	}
+
+	.olympics .section.news .box-medals,
+	.olympics .section.news .box-schedule {
+		width: 100%;
+		float: none;
+		margin-right: 0;
+		height: 221px;
 	}
 
 	.olympics .section.news .wrapper .content .list-headline-news.right-images img,
@@ -828,6 +957,17 @@
 	}
 
 	.olympics .swim-play .box-swim-play .box.third {
+		float: none;
+		width: 100%;
+	}
+
+	.olympics .swim-play .box-swim-play .adv-box.right {
+		width: 100%;
+		max-width: 300px;
+		margin: 0 auto;
+	}
+
+	.olympics .swim-play .box-swim-play .howtoplay-box {
 		display: none;
 	}
 
@@ -864,6 +1004,24 @@
 }
 
 @media (max-width: 640px) {
+	.olympics .banner-top .wrapper-banner .box.bbox-2 h1 {
+		font-size: 22px;
+		max-width: 100px;
+	    margin: 0px auto;
+	    line-height: 24px;
+	    margin-bottom: 5px;
+	    margin-top: 0!important;
+	}
+
+	.olympics .banner-top .wrapper-banner .box.bbox-2.custom p,
+	.olympics .banner-top .wrapper-banner .box.bbox-2.custom p span {
+		font-size: 13px;
+	}
+
+	.olympics .sidebar .melisten-box {
+		max-width: 280px;
+	}
+
 	.olympics .swim-play .box-swim-play .medals-box ul li {
 		width: 30%;
 		margin-right: 4%;
@@ -919,7 +1077,7 @@
 		margin: 10px 0px 15px!important;
 	}
 
-	.olympics .ads-box.top {
+	.olympics .adv-box.top {
 		margin: 10px auto 20px;
 	}
 
@@ -1002,6 +1160,15 @@
 
 	.olympics .banner-top .wrapper-banner .box.bbox-3 span {
 		margin-top: 8px;
+	}
+
+	.olympics .slider.custom .bx-wrapper,
+	.olympics .slider.custom .item .image-item {
+		height: 180px;
+	}
+
+	.olympics .slider.custom .bx-wrapper .bx-controls-direction {
+		top: 37%;
 	}
 
 	#carousel .item {
