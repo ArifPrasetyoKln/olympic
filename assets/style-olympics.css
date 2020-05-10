@@ -406,6 +406,8 @@
 
 .olympics .last-news .item .news-content {
 	font-family: 'Oxygen', sans-serif;
+	position: relative;
+	min-height: 120px;
 }
 
 .olympics .last-news .item label {
@@ -427,6 +429,40 @@
 	text-decoration: underline;
 	color: #cc3636;
 	position: relative;
+}
+
+.olympics .last-news .news-items {
+	display: inline-block;
+	width: 100%;
+}
+
+.olympics .last-news .news-items > .item {
+	width: calc(33.3333% - 30px);
+	margin: 0 15px 40px;
+	display: inline-block;
+	float: left;
+	text-align: left;
+}
+
+.olympics .last-news .news-items .item img {
+	width: 100%;
+}
+
+.olympics .last-news .news-items .item .news-content {
+	min-height: 120px;
+}
+
+.olympics .last-news .news-items .item a.read-more {
+	position: absolute;
+	bottom: 0;
+}
+
+.olympics .last-news .news-items .item span.time-publish {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	font-size: 12px;
+	color: #989898;
 }
 
 .olympics .swim-play {
@@ -802,7 +838,7 @@
 
 	.olympics .banner-top .wrapper-banner .box.bbox-3 a.btn {
 		display: block;
-		max-width: 105px;
+		max-width: 130px;
 		margin: 0px auto;
 	}
 
@@ -897,6 +933,24 @@
 	    float: none;
 	    margin-right: 0px;
 	    padding: 0px 20px;
+	}
+
+	.olympics .last-news .news-items {
+		padding: 20px 20px 50px;
+	}
+
+	.olympics .last-news .news-items > .item {
+		width: 100%;
+		margin: 0 0 40px;
+		float: none;
+	}
+
+	.olympics .last-news .news-items .item .news-content {
+		min-height: 95px;
+	}
+
+	.olympics .last-news .news-items .adv-box.top {
+		margin: 0px 0 40px;
 	}
 
 	.olympics .section.news .schedule {
@@ -1133,6 +1187,7 @@
 		line-height: 56px;
 		margin-left: -9px;
 		margin-top: -10px!important; 
+		letter-spacing: 0;
 	}
 	
 	.olympics .banner-top .wrapper-banner .box.bbox-2 p {
