@@ -726,6 +726,241 @@
     font-style: italic;
 }
 
+.olympics .section.sg-feature {
+	text-align: center;
+	background-image: url('img/background-marron-top.png');
+	background-repeat: no-repeat;
+	background-position: center -60px;
+
+}
+
+.olympics .section.sg-feature .wrapper {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 48px 0px 170px;
+	position: relative;
+	display: inline-block;
+	text-align: left;
+}
+
+.olympics .section.sg-feature h4.title {
+	display: block;
+	text-align: center;
+	margin-top: 40px!important;
+	font-size: 30px;
+	line-height: 38px;
+}
+
+.olympics .section.sg-feature h5.sub-title {
+	display: block;
+	text-align: center;
+	margin-top: 30px!important;
+	color: #494949;
+	font-size: 25px;
+	font-weight: 400;
+}
+
+.olympics .section.sg-feature .contain.athletes {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete {
+	width: calc(33.3333% - 30px);
+	min-height: 345px;
+	margin: 0px 15px 30px!important;
+	float: left;
+	display: inline-block;
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete:hover {
+	cursor: pointer;
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete .box-picture {
+	overflow: hidden;
+	position: relative;
+	background-color: #000;
+	width: 100%;
+	height: 265px;
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete .box-picture img {
+	transform: translate(-50%, 0);
+	left: 50%;
+	position: absolute;
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete .box-name {
+	padding-top: 93px;
+	background-repeat: no-repeat;
+	background-position: center top;
+	margin-top: -94px!important;
+	position: relative;
+}
+
+.olympics .section.sg-feature .contain.athletes.men .list-athlete .box-name {
+	background-image: url('img/bg-news-blue-1.png');
+}
+
+.olympics .section.sg-feature .contain.athletes.women .list-athlete .box-name {
+	background-image: url('img/bg-news-maroon.png');
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete .box-name .contain {
+	padding: 11px 15px;
+	width: 100%;
+}
+
+.olympics .section.sg-feature .contain.athletes.men .list-athlete .box-name .contain {
+	background-color: #004b9a;
+}
+
+.olympics .section.sg-feature .contain.athletes.women .list-athlete .box-name .contain {
+	background-color: #922746;
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete .box-name h4 {
+	font-weight: 400;
+	font-size: 30px;
+	color: #FFF;
+	line-height: 34px;
+	margin: 0px;
+	text-transform: uppercase;
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete .box-name span {
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 24px;
+	margin: 0px;
+	display: block;
+	text-transform: uppercase;
+}
+
+.olympics .section.sg-feature .contain.athletes.men .list-athlete .box-name span {
+	color: #70b0f3;
+}
+
+.olympics .section.sg-feature .contain.athletes.women .list-athlete .box-name span {
+	color: #ee8591;
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete.active .box-name .contain {
+	padding: 61px 15px 11px;
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete .box-name .arrow {
+	position: absolute;
+	bottom: 40px;
+	right: 15px;
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete.active .box-name .arrow {
+	-webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete .description {
+	display: none;
+	border: 1px solid #004b9a;
+	padding: 45px;
+	position: absolute;
+	width: calc(100% - 30px);
+	left: 15px;
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete .description p {
+	font-family: 'Oxygen', sans-serif;
+	font-size: 16px;
+	line-height: 22px;
+	color: #4d4d4d;
+	letter-spacing: -.5px;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+.olympics .section.sg-feature .contain.athletes .list-athlete.active .description {
+	display: block;
+}
+
+.olympics .section.sg-feature .contain.athletes.teams .list-athlete {
+	width: calc(100% - 30px);
+	float: none;
+	min-height: 265px;
+}
+
+.olympics .section.sg-feature .contain.athletes.teams .list-athlete .thumb {
+	width: 100%;
+	display: inline-block;
+}
+
+.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-picture {
+	width: calc(100% - 345px);
+	float: right;
+	display: inline-block;
+}
+
+.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name {
+	width: 413px;
+	float: left;
+	display: inline-block;
+	margin-top: 0!important;
+	padding-top: 0;
+	padding-right: 68px;
+	margin-right: -68px;
+	background-position: right top;
+}
+
+.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name {
+	background-image: url('img/bg-news-maroon-right.png');
+}
+
+.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name .contain {
+	background-color: #922746;
+	min-height: 265px;
+	position: relative;
+}
+
+.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name h4 {
+	position: absolute;
+	bottom: 41px;
+	max-width: 272px;
+}
+
+.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name span {
+	color: #ee8591;
+	position: absolute;
+	bottom: 12px;
+}
+
+.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name .arrow {
+	right: 58px;
+	bottom: 15px;
+}
+
+.olympics .section.sg-feature .contain.athletes.teams .list-athlete .description {
+	margin-top: -5px;
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete .adv-box {
+	max-width: 320px;
+	width: 100%;
+	height: 100px;
+	margin: 0 auto;
+	background-color: #eaeaea;
+}
+
+.olympics .section.sg-feature .contain.athletes .adv-box-center {
+	max-width: 728px;
+	width: 100%;
+	height: 90px;
+	margin: 0 auto 30px;
+	background-color: #eaeaea;	
+}
+
 /* Carousel Styling */
 
 .owl-theme .owl-nav {
