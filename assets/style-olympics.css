@@ -728,20 +728,31 @@
 
 .olympics .section.sg-feature {
 	text-align: center;
-	background-image: url('img/background-marron-top.png');
+	background-image: url('img/background-sgfeature.png');
 	background-repeat: no-repeat;
-	background-position: center -60px;
-
+	background-position: center bottom;
+	position: relative;
 }
 
 .olympics .section.sg-feature .wrapper {
 	width: 100%;
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 48px 0px 170px;
+	padding: 48px 0px 450px;
 	position: relative;
 	display: inline-block;
 	text-align: left;
+}
+
+.olympics .section.sg-feature .bg-top {
+	width: 100%;
+	height: 672px;
+	position: absolute;
+	top: 0px;
+	background-image: url('img/background-marron-top.png');
+	background-repeat: no-repeat;
+	background-position: center -60px;
+	background-size: cover;
 }
 
 .olympics .section.sg-feature h4.title {
@@ -871,6 +882,7 @@
 	position: absolute;
 	width: calc(100% - 30px);
 	left: 15px;
+	background-color: #FFF;
 }
 
 .olympics .section.sg-feature .contain.athletes .list-athlete .description p {
@@ -901,6 +913,11 @@
 	width: calc(100% - 345px);
 	float: right;
 	display: inline-block;
+}
+
+.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-picture img.img-mobile {
+	width: 100%;
+	display: none;
 }
 
 .olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name {
@@ -1290,6 +1307,14 @@
 		opacity: 1;
 	}
 
+	.olympics .section.sg-feature .bg-top {
+		text-align: center;
+		background-image: url('img/background-marron-top-mobile.png');
+		background-repeat: no-repeat;
+		background-position: center 0px;
+		background-size: contain;
+	}
+
 	.olympics .section.sg-feature h4.title {
 		font-size: 20px;
 		line-height: 24px;
@@ -1301,15 +1326,31 @@
 		margin-top: 0!important;
 	}
 
+	.olympics .section.sg-feature .contain.athletes {
+		text-align: center;
+	}
+
 	.olympics .section.sg-feature .contain.athletes .list-athlete {
 		width: calc(100% - 30px);
-		max-width: 380px;
+		max-width: 500px;
 		min-height: inherit;
 		margin-bottom: 20px!important;
+		float: none;
+	}
+
+	.olympics .section.sg-feature .contain.athletes .list-athlete .box-picture img {
+		width: 100%;
+		transform: translate(-50%, -50%);
+		top: 50%;
+	}
+
+	.olympics .section.sg-feature .contain.athletes .list-athlete .box-name {
+		background-size: 100% 95px;
 	}
 
 	.olympics .section.sg-feature .contain.athletes .list-athlete .box-name .contain {
 		padding-right: 51px;
+		text-align: left;
 	}
 
 	.olympics .section.sg-feature .contain.athletes .list-athlete .box-name h4 {
@@ -1334,13 +1375,21 @@
 	.olympics .section.sg-feature .contain.athletes .list-athlete .box-name .arrow {
 		bottom: 30px;
 	}
-	
+
 	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-picture {
 		overflow: hidden;
 	    position: relative;
 	    width: 100%;
 	    height: 265px;
 	    float: none;
+	}
+
+	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-picture img.img-desktop {
+		display: none;
+	}
+
+	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-picture img.img-mobile {
+		display: block;
 	}
 
 	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name {
@@ -1351,6 +1400,7 @@
 	    float: none;
 	    width: 100%;
 	    padding-right: 0;
+	    margin-right: 0;
 	}
 
 	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name .contain {
@@ -1369,6 +1419,10 @@
 	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name .arrow {
 		right: 15px;
 		bottom: 40px;
+	}
+
+	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .description {
+		margin-top: 0px;
 	}
 
 }
@@ -1560,5 +1614,17 @@
 
 	.olympics .swim-play .box-swim-play .box.second img {
 		width: 100%;
+	}
+
+	.olympics .section.sg-feature {
+		background-size: auto;
+	}
+}
+
+@media (max-width: 400px) {
+	.olympics .section.sg-feature .contain.athletes .list-athlete .box-picture img,
+	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-picture img.img-mobile {
+		width: auto;
+		height: 100%;
 	}
 }
