@@ -1290,6 +1290,87 @@
 		opacity: 1;
 	}
 
+	.olympics .section.sg-feature h4.title {
+		font-size: 20px;
+		line-height: 24px;
+		margin-bottom: 10px;
+	}
+
+	.olympics .section.sg-feature h5.sub-title {
+		font-size: 17px;
+		margin-top: 0!important;
+	}
+
+	.olympics .section.sg-feature .contain.athletes .list-athlete {
+		width: calc(100% - 30px);
+		max-width: 380px;
+		min-height: inherit;
+		margin-bottom: 20px!important;
+	}
+
+	.olympics .section.sg-feature .contain.athletes .list-athlete .box-name .contain {
+		padding-right: 51px;
+	}
+
+	.olympics .section.sg-feature .contain.athletes .list-athlete .box-name h4 {
+		font-size: 20px;
+		line-height: 24px;
+	}
+
+	.olympics .section.sg-feature .contain.athletes .list-athlete .box-name span {
+		font-size: 15px;
+		line-height: 19px;
+	}
+
+	.olympics .section.sg-feature .contain.athletes .list-athlete .description {
+		padding: 20px;
+	}
+
+	.olympics .section.sg-feature .contain.athletes .list-athlete .description p {
+		font-size: 12px;
+		line-height: 16px;
+	}
+
+	.olympics .section.sg-feature .contain.athletes .list-athlete .box-name .arrow {
+		bottom: 30px;
+	}
+	
+	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-picture {
+		overflow: hidden;
+	    position: relative;
+	    width: 100%;
+	    height: 265px;
+	    float: none;
+	}
+
+	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name {
+		padding-top: 93px;
+		background-image: url('img/bg-news-maroon.png');
+	    background-position: center top;
+	    margin-top: -98px!important;
+	    float: none;
+	    width: 100%;
+	    padding-right: 0;
+	}
+
+	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name .contain {
+		min-height: inherit;
+	}
+
+	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name h4 {
+		position: initial;
+		max-width: 100%;
+	}
+
+	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name span {
+		position: initial;
+	}
+
+	.olympics .section.sg-feature .contain.athletes.teams .list-athlete .box-name .arrow {
+		right: 15px;
+		bottom: 40px;
+	}
+
 }
 
 @media (max-width: 640px) {
