@@ -732,6 +732,7 @@
 	background-repeat: no-repeat;
 	background-position: center bottom;
 	position: relative;
+	background-size: contain;
 }
 
 .olympics .section.sg-feature .wrapper {
@@ -978,6 +979,23 @@
 	background-color: #eaeaea;	
 }
 
+.olympics .section.sg-feature .logo-olympic {
+	position: absolute;
+	right: 55px;
+	bottom: 100px;
+}
+
+.olympics .section.sg-feature .logo-olympic .box {
+	position: relative;
+	color: #d1d1d1;
+	font-size: 11px;
+	font-weight: 300;
+}
+
+.olympics .section.sg-feature .logo-olympic .box img {
+	margin-left: -18px;
+}
+
 /* Carousel Styling */
 
 .owl-theme .owl-nav {
@@ -1025,6 +1043,7 @@
 
 
 @media (max-width: 1280px) {
+
 	.owl-carousel {
 		width: calc(100% - 72px);
 		margin: 0px auto;
@@ -1038,6 +1057,17 @@
 	.olympics .section.news {
 		background-image: url('img/background-marron-mobile.png');
 		background-position: bottom left;
+	}
+
+
+	.olympics .section.sg-feature {
+		background-size: auto;
+		background-position: 100% 107%;
+	}
+
+	.olympics .section.sg-feature .logo-olympic {
+		bottom: 45px;
+		right: 45px;
 	}
 
 }
@@ -1530,6 +1560,11 @@
 		line-height: 16px;
 		margin: 10px 0px;
 	}
+
+	.olympics .section.sg-feature .logo-olympic {
+		bottom: 25px;
+		right: 25px;
+	}
 }
 
 @media (max-width: 500px) {
@@ -1617,7 +1652,7 @@
 	}
 
 	.olympics .section.sg-feature {
-		background-size: auto;
+		
 	}
 }
 
