@@ -813,11 +813,11 @@
 	position: relative;
 }
 
-.olympics .section.sg-feature .contain.athletes.men .list-athlete .box-name {
+.olympics .section.sg-feature .contain.athletes .list-athlete.men .box-name {
 	background-image: url('img/bg-news-blue-1.png');
 }
 
-.olympics .section.sg-feature .contain.athletes.women .list-athlete .box-name {
+.olympics .section.sg-feature .contain.athletes .list-athlete.women .box-name {
 	background-image: url('img/bg-news-maroon.png');
 }
 
@@ -826,11 +826,11 @@
 	width: 100%;
 }
 
-.olympics .section.sg-feature .contain.athletes.men .list-athlete .box-name .contain {
+.olympics .section.sg-feature .contain.athletes .list-athlete.men .box-name .contain {
 	background-color: #004b9a;
 }
 
-.olympics .section.sg-feature .contain.athletes.women .list-athlete .box-name .contain {
+.olympics .section.sg-feature .contain.athletes .list-athlete.women .box-name .contain {
 	background-color: #922746;
 }
 
@@ -852,11 +852,11 @@
 	text-transform: uppercase;
 }
 
-.olympics .section.sg-feature .contain.athletes.men .list-athlete .box-name span {
+.olympics .section.sg-feature .contain.athletes .list-athlete.men .box-name span {
 	color: #70b0f3;
 }
 
-.olympics .section.sg-feature .contain.athletes.women .list-athlete .box-name span {
+.olympics .section.sg-feature .contain.athletes .list-athlete.women .box-name span {
 	color: #ee8591;
 }
 
@@ -877,8 +877,7 @@
 }
 
 .olympics .section.sg-feature .contain.athletes .list-athlete .description {
-	display: none;
-	border: 1px solid #004b9a;
+	display: none;	
 	padding: 45px;
 	position: absolute;
 	width: calc(100% - 30px);
@@ -904,6 +903,8 @@
 	float: none;
 	min-height: 265px;
 }
+
+
 
 .olympics .section.sg-feature .contain.athletes.teams .list-athlete .thumb {
 	width: 100%;
@@ -958,6 +959,14 @@
 	right: 58px;
 	bottom: 15px;
 }
+
+.olympics .section.sg-feature .contain.athletes .list-athlete.women .description,.olympics .section.sg-feature .contain.athletes.teams .list-athlete.women .description {
+	border: 1px solid #922746;
+}
+
+.olympics .section.sg-feature .contain.athletes .list-athlete.men .description,.olympics .section.sg-feature .contain.athletes.teams .list-athlete.men .description{
+	border: 1px solid #004b9a;
+} 
 
 .olympics .section.sg-feature .contain.athletes.teams .list-athlete .description {
 	margin-top: -5px;
