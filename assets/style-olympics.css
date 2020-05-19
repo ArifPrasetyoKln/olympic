@@ -1301,6 +1301,7 @@
 		width: 100%;
 		max-width: 300px;
 		margin: 0 auto;
+		display: none;
 	}
 
 	.olympics .swim-play .box-swim-play .howtoplay-box {
