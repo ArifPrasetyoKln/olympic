@@ -281,7 +281,7 @@
                             <div class="sidebar">
                                 <div class="melisten-box">
                                     <div class="logo-melisten"></div>
-                                    <p>meLISTEN brings to you the best digital radio experience for Mediacorp's 11 radio stations.</p>
+                                    <p>Listen in to Singapore's best radio stations live online with <b style="font-style: italic;">meLISTEN</b>.</p>
                                     <a class="action btn btn-gradient" target="_blank" href="#">DISCOVER NOW</a>
                                 </div>
                                 <div class="fb-widget">FB Widget</div>
@@ -388,7 +388,7 @@
                                 </div>
                             </div>
                             <div class="box second">
-                                <iframe src="dist/index.html" frameborder="0" scrolling="no" width="400px" height="600px"></iframe>                             
+                                <iframe id="swimgame" src="dist/index.html" frameborder="0" scrolling="no" style="max-width:100%; width:400px; height:600px;"></iframe>                             
                             </div>
                             
                             <div class="box box-mobile bottom">
@@ -674,6 +674,24 @@
             }
           })
         })
+
+       $(window).on("load", function () {
+            var $allVideos = $('iframe'),
+                $fluidEl = $('#swimgame');
+            $allVideos.each(function () {
+                $(this).data('aspectRatio', this.height / this.width)
+                    .removeAttr('height')
+                    .removeAttr('width');
+            });
+            $(window).resize(function () {
+                var newWidth = $fluidEl.width();
+                $allVideos.each(function () {
+                    var $el = $(this);
+                    $el.width(newWidth).height(newWidth * $el.data('aspectRatio'));
+                });
+            }).resize();
+        });
+
     </script>
 </body>
 </html>

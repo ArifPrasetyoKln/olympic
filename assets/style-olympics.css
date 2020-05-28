@@ -340,13 +340,17 @@
     padding-top: 10px;
 }
 
-.olympics .sidebar .melisten-box .logo-melisten{
+.olympics .sidebar .melisten-box .logo-melisten {
 	width: 146px;
 	height: 27px;
 	background-image: url(img/melisten-logo.svg);
 	background-size: contain;
 	background-repeat: no-repeat;
 	margin: 0px auto;
+}
+
+.olympics .sidebar .melisten-box p {
+	font-family: "Oxygen",Arial,sans-serif;
 }
 
 .olympics .sidebar .adv-box {
