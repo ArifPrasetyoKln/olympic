@@ -1297,7 +1297,15 @@
 	}
 
 	.olympics .swim-play .box-swim-play {
-		padding: 20px;
+		padding: 20px 0;
+	}
+
+	.olympics .swim-play .box-swim-play .box.box-mobile {
+		padding: 0 20px;
+	}
+
+	.olympics .swim-play .box-swim-play .box.box-mobile.bottom {
+		padding: 0 20px;
 	}
 
 	.olympics .swim-play .box-swim-play .box.second {
